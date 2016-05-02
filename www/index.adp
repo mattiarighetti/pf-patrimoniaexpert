@@ -291,7 +291,7 @@
                                 <li> <a href="https://twitter.com/patrimoniaforum"><i class="fa fa-twitter"></i></a></li>
                             </ul>
                             <ul class="menu-footer list-inline">
-                                <li> <a href="chi-siamo.html">Chi siamo</a></li>
+                                <li> <a href="chi-siamo">Chi siamo</a></li>
                                 <li> <a href="contattaci.html">Contattaci</a></li>
                             </ul>
                         </div>
