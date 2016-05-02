@@ -1,0 +1,39 @@
+ad_page_contract {
+    Programma per la stampa PDF della domanda con risposte correlate.
+    
+    @author Mattia Righetti (mattia.righetti@professionefinanza.com)
+    @creation-date Tuesday 26 April 2016
+    @param domanda_id
+} {
+    domanda_id:naturalnum
+}
+#Estrazione generalità domanda
+db_1row query "select testo, investitore_id, categoria_id, to_char(timestamp, 'il DD/MM/YYYY alle HH24:MI') as timestamp from pe_domande where domanda_id = :domanda_id"
+set categoria [db_string query "select descrizione from pe_categorie where categoria_id = :categoria_id"]
+set username [db_string query "select u.username from users u, pe_investitori i where i.user_id = u.user_id"]
+set html "<table border=0><tr><td colspan=3><center>Riepilogo della domanda</center></td></tr><tr><td>Posta $timestamp</td><td>Categoria: $categoria</td><td>Da: $username</td></tr></table><br>"
+#Ciclo di estrazione risposte
+db_foreach query "select risposta_id, testo, professionista_id, to_char(timestamp, 'DD/MM/YYYY alle HH24:MI') as timestamp from pe_risposte where domanda_id = :domanda_id" {
+    append html "<u>Risposta di $username del $timestamp <small>(ID $risposta_id)</small></u><br><p>$testo</p><br>"
+    #Se vi sono Errata corrige...
+    if {[db_0or1row query "select * from pe_risposte_erratacorrige where risposta_id = :risposta_id limit 1"]} {
+	set errata [db_string query "select testo from pe_risposte_erratacorrige where risposta_id = :risposta_id"]
+	append html "<table border=0><tr><td style=\"width:20px\"></td><td><p>$errata</p></td></tr></table>"
+    }
+}
+append html "</html>"
+set filenamehtml "/tmp/temporary.html"
+set filenamepdf  "/usr/share/openacs/packages/patrimoniaexpert/www/files/questions/question_"
+append filenamepdf $investitore_id "_" $domanda_id ".pdf"
+#set link "http://www.pfawards.it/files/exams/exam2_"
+#append link $persona_id "_" $esame_id ".pdf"
+set file_html [open $filenamehtml w]
+puts $file_html $html
+close $file_html
+with_catch error_msg {
+    exec htmldoc --portrait --webpage --header ... --footer ... --quiet --left 1cm --right 1cm --top 1cm --bottom 1cm --fontsize 12 -f $filenamepdf $filenamehtml
+} {
+    ns_log notice "errore htmldoc  <code>$error_msg </code>"
+}
+#ns_unlink $filenamehtml
+ad_script_abort

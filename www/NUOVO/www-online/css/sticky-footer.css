@@ -1,0 +1,44 @@
+
+/* Sticky footer - da inserire per pagine con poco contenuto - css da non inserire nelle pagine dove presente HEADER height 100% */
+
+html{
+	position:relative;
+	min-height:100%;
+	height:auto;
+}
+body{
+	margin-bottom:84px;
+	height:auto;
+}
+nav + section{
+	padding-top:100px;
+}
+#footer {
+    bottom: 0;
+    width:100%;
+	height:84px;
+    position: absolute;
+}
+/*---*/
+/* Sticky footer - Small size */
+@media(max-width: 768px) {
+	html{
+		position:relative;
+		min-height:100%;
+		height:auto;
+	}
+	body{
+		margin-bottom:145px;
+		height:auto;
+	}
+	nav ~ section{
+		padding-top:100px;
+	}
+	#footer {
+		bottom: 0;
+		width:100%;
+		height:145px;
+		position: absolute;
+	}
+}
+/*---*/

@@ -1,0 +1,654 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>Dashboard Professionisti - Vetrina di dettaglio - PatrimoniaExpert</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+
+    <!-- Custom Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" type="text/css">
+
+    <!-- Plugin CSS -->
+    <link rel="stylesheet" href="css/animate.min.css" type="text/css">
+    <link rel="stylesheet" href="css/cropper.css" type="text/css">
+	<link rel="stylesheet" href="css/summernote.css" type="text/css">
+
+    <!-- Creative CSS -->
+    <link rel="stylesheet" href="css/creative.css" type="text/css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/custom.css" type="text/css">
+    <link rel="stylesheet" href="css/sticky-footer.css" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body id="logged-in">
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+		<div class="row no-gutter">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand page-scroll" href="index.html">
+                	<img src="images/logo-beta.png" class="img-responsive" alt="">
+                </a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <div class="user">
+                <ul class="nav navbar-nav navbar-right">
+                	<li class="dropdown">
+                        <a href="#" class="login-img dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                        	<img src="images/default/user.jpg" class="img-responsive" alt="">
+                            <span class="badge">4</span>
+                        </a>
+                        <ul class="dropdown-menu">
+                        	<li><a href="#"><span class="glyphicon glyphicon-pencil"></span> Modifica</a></li>
+                            <li><a href="#"><span class="glyphicon glyphicon-off"></span> Esci</a></li>
+                        </ul>
+                    </li>
+                </ul>
+			</div>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right main-menu">
+                    <li>
+                        <a href="index.html">Trova professionista</a>
+                    </li>
+                    <li>
+                        <a href="index.html">Cerca eventi</a>
+                    </li>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+		</div>
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    <section id="dashboard" class="section-dashboard-professionisti-vetrina-dettaglio">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-xs-4 col-sm-3 col-md-2 sidebar">
+                    <ul class="nav nav-sidebar">
+                    	<li><a href="dashboard-professionisti.html">Home</a></li>
+                        <!--<li><a href="#risposte-aperte">Risposte aperte</a></li>
+                        <li><a href="#risposte-date">Risposte date</a></li>-->
+                        <li class="active"><a class="link-menu-vetrina-dettaglio" href="dashboard-professionisti-vetrina-dettaglio.html">Vetrina di dettaglio</a></li>
+                        <li><a href="dashboard-professionisti-info-costi.html">Info costi</a></li>
+                        <li><a href="dashboard-professionisti-modifica-account.html">Modifica account</a></li>
+                    </ul>
+                </div>
+                <div class="col-xs-offset-4 col-xs-8 col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
+                	<div class="row">
+                    	<div class="col-xs-12">
+                        	<div class="cont-dash">
+
+                            	<div id="vetrina-dettaglio">
+                                    <div class="col-xs-12">
+                                        <h2 class="section-heading">Vetrina di dettaglio</h2>
+                                        <p>Qui puoi modificare i tuoi dati visibili nella vetrina di dettaglio:</p>
+                                        <form role="form" action="" method="post" class="modifica-vetrina-dettaglio-form">
+                                        	<div class="form-group file-upload">
+                                            	<span><strong>Immagine profilo:</strong></span>
+                                                <br>
+                                                <small>puoi caricare un file di max: 1MB</small>
+                                        		<!--<input type="file" name="pic" accept="image/jpeg">-->
+                                                
+                                                 <!-- Cropper User -->
+                                                  <div class="cropper-user">
+                                                    <div class="row">
+                                                      <div class="col-md-12">
+                                                        <!-- <h3 class="page-header">Demo:</h3> -->
+                                                        <div class="img-container">
+                                                          <img src="images/default/user.jpg" alt="Picture">
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                                    <div class="row">
+                                                      <div class="col-md-12 docs-buttons">
+                                                        <!-- <h3 class="page-header">Toolbar:</h3> -->
+                                                        <div class="btn-group">
+                                                          <button class="btn btn-primary" data-method="zoom" data-option="0.1" type="button" title="Zoom In">
+                                                            <span class="docs-tooltip" data-toggle="tooltip" title="Zoom in">
+                                                              <span class="icon icon-zoom-in"></span>
+                                                            </span>
+                                                          </button>
+                                                          <button class="btn btn-primary" data-method="zoom" data-option="-0.1" type="button" title="Zoom Out">
+                                                            <span class="docs-tooltip" data-toggle="tooltip" title="Zoom out">
+                                                              <span class="icon icon-zoom-out"></span>
+                                                            </span>
+                                                          </button>
+                                                          <button class="btn btn-primary" data-method="rotate" data-option="-45" type="button" title="Rotate Left">
+                                                            <span class="docs-tooltip" data-toggle="tooltip" title="Ruota a sinistra">
+                                                              <span class="icon icon-rotate-left"></span>
+                                                            </span>
+                                                          </button>
+                                                          <button class="btn btn-primary" data-method="rotate" data-option="45" type="button" title="Rotate Right">
+                                                            <span class="docs-tooltip" data-toggle="tooltip" title="Ruota a destra">
+                                                              <span class="icon icon-rotate-right"></span>
+                                                            </span>
+                                                          </button>
+                                                        </div>
+                                                
+                                                        <div class="btn-group">
+                                                          <button class="btn btn-primary" data-method="crop" type="button" title="Crop">
+                                                            <span class="docs-tooltip" data-toggle="tooltip" title="Ritaglia">
+                                                              <span class="icon icon-ok"></span>
+                                                            </span>
+                                                          </button>
+                                                          <button class="btn btn-primary" data-method="clear" type="button" title="Clear">
+                                                            <span class="docs-tooltip" data-toggle="tooltip" title="Annulla">
+                                                              <span class="icon icon-remove"></span>
+                                                            </span>
+                                                          </button>
+                                                          <button class="btn btn-primary" data-method="reset" type="button" title="Reset">
+                                                            <span class="docs-tooltip" data-toggle="tooltip" title="Reset">
+                                                              <span class="icon icon-refresh"></span>
+                                                            </span>
+                                                          </button>
+                                                          <label class="btn btn-primary btn-upload" for="inputImage" title="Upload image file">
+                                                            <input class="sr-only" id="inputImage" name="file" type="file" accept="image/*">
+                                                            <span class="docs-tooltip" data-toggle="tooltip" title="Importa immagine esistente">
+                                                              <span class="icon icon-upload"></span>
+                                                            </span>
+                                                          </label>
+                                                        </div>
+                                                
+                                                        <button class="btn btn-primary" data-method="getCroppedCanvas" type="button" data-option="{ &quot;width&quot;: 650, &quot;height&quot;: 650 }">
+                                                          <span class="docs-tooltip">
+                                                            Conferma ritaglio
+                                                          </span>
+                                                        </button>
+                                                        
+                                                        <!-- Show the cropped image in modal -->
+                                                        <div class="modal fade docs-cropped" id="getCroppedCanvasModal" aria-hidden="true" aria-labelledby="getCroppedCanvasTitle" role="dialog" tabindex="-1">
+                                                          <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                              <div class="modal-header">
+                                                                <button class="close" data-dismiss="modal" type="button" aria-hidden="true">×</button>
+                                                                <h4 class="modal-title" id="getCroppedCanvasTitle">Immagine ritagliata</h4>
+                                                              </div>
+                                                              <div class="modal-body">
+                                                              </div>
+                                                              <!-- <div class="modal-footer">
+                                                                <button class="btn btn-primary" data-dismiss="modal" type="button">Close</button>
+                                                              </div> -->
+                                                            </div>
+                                                          </div>
+                                                        </div><!-- /.modal -->
+                                                      </div><!-- /.docs-buttons -->
+                                                    </div>
+													
+                                                  </div>
+                                                
+                                                  <!-- Alert -->
+                                                  <div class="docs-alert"><span class="warning message"></span></div>
+                                                  
+                                            </div>
+                                        	<div class="form-group file-upload">
+                                            	<span><strong>Immagine di sfondo:</strong></span>
+                                                <br>
+                                                <small>puoi caricare un file di max: 1MB</small>
+                                        		<!--<input type="file" name="pic" accept="image/jpeg">-->
+                                                
+                                                 <!-- Cropper Profile -->
+                                                  <div class="cropper-profile">
+                                                    <div class="row">
+                                                      <div class="col-md-12">
+                                                        <!-- <h3 class="page-header">Demo:</h3> -->
+                                                        <div class="img-container">
+                                                          <img src="images/default/profile.jpg" alt="Picture">
+                                                        </div>
+                                                      </div>
+                                                    </div>
+                                                    <div class="row">
+                                                      <div class="col-md-12 docs-buttons">
+                                                        <!-- <h3 class="page-header">Toolbar:</h3> -->
+                                                        <div class="btn-group">
+                                                          <button class="btn btn-primary" data-method="zoom" data-option="0.1" type="button" title="Zoom In">
+                                                            <span class="docs-tooltip" data-toggle="tooltip" title="Zoom in">
+                                                              <span class="icon icon-zoom-in"></span>
+                                                            </span>
+                                                          </button>
+                                                          <button class="btn btn-primary" data-method="zoom" data-option="-0.1" type="button" title="Zoom Out">
+                                                            <span class="docs-tooltip" data-toggle="tooltip" title="Zoom out">
+                                                              <span class="icon icon-zoom-out"></span>
+                                                            </span>
+                                                          </button>
+                                                          <button class="btn btn-primary" data-method="rotate" data-option="-45" type="button" title="Rotate Left">
+                                                            <span class="docs-tooltip" data-toggle="tooltip" title="Ruota a sinistra">
+                                                              <span class="icon icon-rotate-left"></span>
+                                                            </span>
+                                                          </button>
+                                                          <button class="btn btn-primary" data-method="rotate" data-option="45" type="button" title="Rotate Right">
+                                                            <span class="docs-tooltip" data-toggle="tooltip" title="Ruota a destra">
+                                                              <span class="icon icon-rotate-right"></span>
+                                                            </span>
+                                                          </button>
+                                                        </div>
+                                                
+                                                        <div class="btn-group">
+                                                          <button class="btn btn-primary" data-method="crop" type="button" title="Crop">
+                                                            <span class="docs-tooltip" data-toggle="tooltip" title="Ritaglia">
+                                                              <span class="icon icon-ok"></span>
+                                                            </span>
+                                                          </button>
+                                                          <button class="btn btn-primary" data-method="clear" type="button" title="Clear">
+                                                            <span class="docs-tooltip" data-toggle="tooltip" title="Annulla">
+                                                              <span class="icon icon-remove"></span>
+                                                            </span>
+                                                          </button>
+                                                          <button class="btn btn-primary" data-method="reset" type="button" title="Reset">
+                                                            <span class="docs-tooltip" data-toggle="tooltip" title="Reset">
+                                                              <span class="icon icon-refresh"></span>
+                                                            </span>
+                                                          </button>
+                                                          <label class="btn btn-primary btn-upload" for="inputImage" title="Upload image file">
+                                                            <input class="sr-only" id="inputImage" name="file" type="file" accept="image/*">
+                                                            <span class="docs-tooltip" data-toggle="tooltip" title="Importa immagine esistente">
+                                                              <span class="icon icon-upload"></span>
+                                                            </span>
+                                                          </label>
+                                                        </div>
+                                                
+                                                        <button class="btn btn-primary" data-method="getCroppedCanvas" type="button" data-option="{ &quot;width&quot;: 1400, &quot;height&quot;: 850 }">
+                                                          <span class="docs-tooltip">
+                                                            Conferma ritaglio
+                                                          </span>
+                                                        </button>
+                                                        
+                                                        <!-- Show the cropped image in modal -->
+                                                        <div class="modal fade docs-cropped" id="getCroppedCanvasModal" aria-hidden="true" aria-labelledby="getCroppedCanvasTitle" role="dialog" tabindex="-1">
+                                                          <div class="modal-dialog">
+                                                            <div class="modal-content">
+                                                              <div class="modal-header">
+                                                                <button class="close" data-dismiss="modal" type="button" aria-hidden="true">×</button>
+                                                                <h4 class="modal-title" id="getCroppedCanvasTitle">Immagine ritagliata</h4>
+                                                              </div>
+                                                              <div class="modal-body">
+                                                              </div>
+                                                              <!-- <div class="modal-footer">
+                                                                <button class="btn btn-primary" data-dismiss="modal" type="button">Close</button>
+                                                              </div> -->
+                                                            </div>
+                                                          </div>
+                                                        </div><!-- /.modal -->
+                                                      </div><!-- /.docs-buttons -->
+                                                    </div>
+													
+                                                  </div>
+                                                
+                                                  <!-- Alert -->
+                                                  <div class="docs-alert"><span class="warning message"></span></div>
+                                                  
+                                            </div>  
+                                            <div class="form-group">
+                                                <label for="form-telefono">Telefono</label>
+                                                <input type="text" name="form-telefono" placeholder="Telefono..." class="form-telefono form-control" id="form-telefono">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="form-fax">Fax</label>
+                                                <input type="text" name="form-fax" placeholder="Fax..." class="form-fax form-control" id="form-fax">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="form-citta">Città</label>
+                                                <input type="text" name="form-citta" placeholder="Città..." class="form-citta form-control" id="form-citta">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="form-indirizzo">Indirizzo</label>
+                                                <input type="text" name="form-indirizzo" placeholder="Indirizzo..." class="form-indirizzo form-control" id="form-indirizzo">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="form-sito-web">Sito web</label>
+                                                <input type="text" name="form-sito-web" placeholder="Sito web..." class="form-sito-web form-control" id="form-sito-web">
+                                            </div>
+                                            <hr>
+                                            <div class="form-group">
+                                            	<h4>Social:</h4>
+                                                <label for="form-social-facebook">Social Facebook</label>
+                                                <input type="text" name="form-social-facebook" placeholder="Link Facebook..." class="form-social-facebook form-control" id="form-social-facebook">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="form-social-twitter">Social Twitter</label>
+                                                <input type="text" name="form-social-twitter" placeholder="Link Twitter..." class="form-social-twitter form-control" id="form-social-twitter">
+                                            </div>  
+                                            <div class="form-group">
+                                                <label for="form-social-linkedin">Social Linkedin</label>
+                                                <input type="text" name="form-social-linkedin" placeholder="Link Linkedin..." class="form-social-linkedin form-control" id="form-social-linkedin">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="form-social-google">Social Google+</label>
+                                                <input type="text" name="form-social-google" placeholder="Link Google+..." class="form-social-google form-control" id="form-social-google">
+                                            </div>
+                                            <hr>
+                                            <div class="cont-check-area-competenza">
+                                                <h4>Area di competenza:</h4>
+                                                <div class="form-group check-area-competenza">
+                                                    <input type="checkbox" name="fancy-checkbox-analisi" id="fancy-checkbox-analisi" autocomplete="off" />
+                                                    <div class="btn-group">
+                                                        <label for="fancy-checkbox-analisi" class="btn btn-default">
+                                                            <span class=""><img src="images/icons/analisi.png" class="img-responsive" alt=""/></span>
+                                                            <span><img src="images/icons/analisi-gray.png" class="img-responsive" alt=""/></span>
+                                                        </label>
+                                                        <label for="fancy-checkbox-analisi" class="btn btn-default active">
+                                                            Analisi di mercato
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group check-area-competenza">
+                                                    <input type="checkbox" name="fancy-checkbox-cliente" id="fancy-checkbox-cliente" autocomplete="off" />
+                                                    <div class="btn-group">
+                                                        <label for="fancy-checkbox-cliente" class="btn btn-default">
+                                                            <span class=""><img src="images/icons/cliente.png" class="img-responsive" alt=""/></span>
+                                                            <span><img src="images/icons/cliente-gray.png" class="img-responsive" alt=""/></span>
+                                                        </label>
+                                                        <label for="fancy-checkbox-cliente" class="btn btn-default active">
+                                                            Comprensione delle esigenze
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group check-area-competenza">
+                                                    <input type="checkbox" name="fancy-checkbox-famiglia" id="fancy-checkbox-famiglia" autocomplete="off" />
+                                                    <div class="btn-group">
+                                                        <label for="fancy-checkbox-famiglia" class="btn btn-default">
+                                                            <span class=""><img src="images/icons/famiglia.png" class="img-responsive" alt=""/></span>
+                                                            <span><img src="images/icons/famiglia-gray.png" class="img-responsive" alt=""/></span>
+                                                        </label>
+                                                        <label for="fancy-checkbox-famiglia" class="btn btn-default active">
+                                                            Consulenza alla famiglia
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group check-area-competenza">
+                                                    <input type="checkbox" name="fancy-checkbox-immobiliare" id="fancy-checkbox-immobiliare" autocomplete="off" />
+                                                    <div class="btn-group">
+                                                        <label for="fancy-checkbox-immobiliare" class="btn btn-default">
+                                                            <span class=""><img src="images/icons/immobiliare.png" class="img-responsive" alt=""/></span>
+                                                            <span><img src="images/icons/immobiliare-gray.png" class="img-responsive" alt=""/></span>
+                                                        </label>
+                                                        <label for="fancy-checkbox-immobiliare" class="btn btn-default active">
+                                                            Investimento immobiliare
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group check-area-competenza">
+                                                    <input type="checkbox" name="fancy-checkbox-impresa" id="fancy-checkbox-impresa" autocomplete="off" />
+                                                    <div class="btn-group">
+                                                        <label for="fancy-checkbox-impresa" class="btn btn-default">
+                                                            <span class=""><img src="images/icons/impresa.png" class="img-responsive" alt=""/></span>
+                                                            <span><img src="images/icons/impresa-gray.png" class="img-responsive" alt=""/></span>
+                                                        </label>
+                                                        <label for="fancy-checkbox-impresa" class="btn btn-default active">
+                                                            Consulenza all'impresa
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group check-area-competenza">
+                                                    <input type="checkbox" name="fancy-checkbox-patrimonio" id="fancy-checkbox-patrimonio" autocomplete="off" />
+                                                    <div class="btn-group">
+                                                        <label for="fancy-checkbox-patrimonio" class="btn btn-default">
+                                                            <span class=""><img src="images/icons/patrimonio.png" class="img-responsive" alt=""/></span>
+                                                            <span><img src="images/icons/patrimonio-gray.png" class="img-responsive" alt=""/></span>
+                                                        </label>
+                                                        <label for="fancy-checkbox-patrimonio" class="btn btn-default active">
+                                                            Tutela patrimoniale
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group check-area-competenza">
+                                                    <input type="checkbox" name="fancy-checkbox-pianificazione" id="fancy-checkbox-pianificazione" autocomplete="off" />
+                                                    <div class="btn-group">
+                                                        <label for="fancy-checkbox-pianificazione" class="btn btn-default">
+                                                            <span class=""><img src="images/icons/pianificazione.png" class="img-responsive" alt=""/></span>
+                                                            <span><img src="images/icons/pianificazione-gray.png" class="img-responsive" alt=""/></span>
+                                                        </label>
+                                                        <label for="fancy-checkbox-pianificazione" class="btn btn-default active">
+                                                            Pianificazione successoria
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group check-area-competenza">
+                                                    <input type="checkbox" name="fancy-checkbox-portafoglio" id="fancy-checkbox-portafoglio" autocomplete="off" />
+                                                    <div class="btn-group">
+                                                        <label for="fancy-checkbox-portafoglio" class="btn btn-default">
+                                                            <span class=""><img src="images/icons/portafoglio.png" class="img-responsive" alt=""/></span>
+                                                            <span><img src="images/icons/portafoglio-gray.png" class="img-responsive" alt=""/></span>
+                                                        </label>
+                                                        <label for="fancy-checkbox-portafoglio" class="btn btn-default active">
+                                                            Costruzione portafoglio
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group check-area-competenza">
+                                                    <input type="checkbox" name="fancy-checkbox-previdenza" id="fancy-checkbox-previdenza" autocomplete="off" />
+                                                    <div class="btn-group">
+                                                        <label for="fancy-checkbox-previdenza" class="btn btn-default">
+                                                            <span class=""><img src="images/icons/previdenza.png" class="img-responsive" alt=""/></span>
+                                                            <span><img src="images/icons/previdenza-gray.png" class="img-responsive" alt=""/></span>
+                                                        </label>
+                                                        <label for="fancy-checkbox-previdenza" class="btn btn-default active">
+                                                            Consulenza previdenziale
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                       		</div>
+                                            <hr>
+                                            <div class="cont-check-certificazioni">
+                                            	<h4>Certificazioni PFSpecialist:</h4>
+                                                <small>Le certificazioni PFSpecialist non sono inseribili, qualora si avesse certificazioni PFSpecialist inviare una mail a <a href="">info@pfspecialist.com</a></small>
+                                                <h4>Altre Certificazioni:</h4>
+                                                <div class="form-group check-area-competenza">
+                                                    <input type="checkbox" name="fancy-checkbox-pwc" id="fancy-checkbox-pwc" autocomplete="off" />
+                                                    <div class="btn-group">
+                                                        <label for="fancy-checkbox-pwc" class="btn btn-default">
+                                                            <span class="glyphicon glyphicon-ok"></span>
+                                                            <span></span>
+                                                        </label>
+                                                        <label for="fancy-checkbox-pwc" class="btn btn-default active">
+                                                            Pwc
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group check-area-competenza">
+                                                    <input type="checkbox" name="fancy-checkbox-efp" id="fancy-checkbox-efp" autocomplete="off" />
+                                                    <div class="btn-group">
+                                                        <label for="fancy-checkbox-efp" class="btn btn-default">
+                                                            <span class="glyphicon glyphicon-ok"></span>
+                                                            <span></span>
+                                                        </label>
+                                                        <label for="fancy-checkbox-efp" class="btn btn-default active">
+                                                            Efp
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group check-area-competenza">
+                                                    <input type="checkbox" name="fancy-checkbox-efa" id="fancy-checkbox-efa" autocomplete="off" />
+                                                    <div class="btn-group">
+                                                        <label for="fancy-checkbox-efa" class="btn btn-default">
+                                                            <span class="glyphicon glyphicon-ok"></span>
+                                                            <span></span>
+                                                        </label>
+                                                        <label for="fancy-checkbox-efa" class="btn btn-default active">
+                                                            Efa
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group check-area-competenza">
+                                                    <input type="checkbox" name="fancy-checkbox-defs" id="fancy-checkbox-defs" autocomplete="off" />
+                                                    <div class="btn-group">
+                                                        <label for="fancy-checkbox-defs" class="btn btn-default">
+                                                            <span class="glyphicon glyphicon-ok"></span>
+                                                            <span></span>
+                                                        </label>
+                                                        <label for="fancy-checkbox-defs" class="btn btn-default active">
+                                                            Defs
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                                <div class="form-group check-area-competenza">
+                                                    <input type="checkbox" name="fancy-checkbox-aipb" id="fancy-checkbox-aipb" autocomplete="off" />
+                                                    <div class="btn-group">
+                                                        <label for="fancy-checkbox-aipb" class="btn btn-default">
+                                                            <span class="glyphicon glyphicon-ok"></span>
+                                                            <span></span>
+                                                        </label>
+                                                        <label for="fancy-checkbox-aipb" class="btn btn-default active">
+                                                            Aipb
+                                                        </label>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                            <hr>
+                                            <div class="form-group">
+                                                <label for="form-prov-att">Provincia di attività</label>
+                                                <input type="text" name="form-prov-att" placeholder="Provincia di attività..." class="form-prov-att form-control" id="form-prov-att">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="form-citazione">La citazione in cui mi ritrovo</label>
+                                                <input type="text" name="form-citazione" placeholder="La citazione in cui mi ritrovo..." class="form-citazione form-control" id="form-citazione">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="form-esperienza">Anni di esperienza</label>
+                                                <input type="text" name="form-esperienza" placeholder="Anni di esperienza..." class="form-esperienza form-control" id="form-esperienza">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="form-clienti">Numero clienti</label>
+                                                <input type="text" name="form-clienti" placeholder="Numero clienti..." class="form-clienti form-control" id="form-clienti">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="form-patrimonio-gestito">Patrimonio in gestione</label>
+                                                <input type="text" name="form-patrimonio-gestito" placeholder="Patrimonio in gestione..." class="form-patrimonio-gestito form-control" id="form-patrimonio-gestito">
+                                            </div>
+                                            <hr>
+                                            <h4>La mia attività</h4>
+                                            <!--<textarea name="form-mia-attivita" placeholder="Scrivi qui la tua attività..." class="form-mia-attivita form-control" id="form-mia-attivita"></textarea>-->
+                                            <!--<p>
+                                            	<button onclick="edit()" class="btn btn-primary" id="edit">Edit</button>
+												<button onclick="save()" class="btn btn-primary" id="save">Save</button>
+                                            </p>-->
+                                            <div class="summernote">Hello world</div>
+                                            <hr>
+                                            <h4>Esperienze professionali</h4>
+                                            <!--<textarea name="form-esperienze-prof" placeholder="Scrivi qui le tue esperienze professionali..." class="form-esperienze-prof form-control" id="form-esperienze-prof"></textarea>-->
+                                            <div class="summernote">Hello world</div>
+                                            <hr>
+                                            <h4>Ultimi corsi di formazione frequentati</h4>
+                                            <!--<textarea name="form-corsi-prof" placeholder="Scrivi qui i tuoi ultimi corsi di formazione frequentati..." class="form-corsi-prof form-control" id="form-corsi-prof"></textarea>-->
+                                            <div class="summernote">Hello world</div>
+                                           <hr>
+                                           <button type="submit" class="btn modifica-vetrina">Modifica vetrina di dettaglio</button>
+                                    	</form>        
+                                    </div>
+                            	</div>
+                                        
+                            </div>
+                        </div>
+                    </div>
+                	<!--<div class="row no-gutter">
+                    	<div class="col-xs-12">
+                            <section id="footer">
+                                <div class="footer_b">
+                                    <div class="container-fluid">
+                                        <div class="row">
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <div class="footer_bottom">
+                                                    <p class="text-block"> &copy; Copyright reserved to <span>PF Holding srl</span></p>
+                                                </div>
+                                            </div>
+                                            <div class="col-md-6 col-sm-6 col-xs-12">
+                                                <div class="footer_mid pull-right">
+                                                    <ul class="social-contact list-inline">
+                                                        <li> <a href="https://facebook.com/patrimoniaexpert"><i class="fa fa-facebook"></i></a></li>
+                                                        <!--<li><a href="#"> <i class="fa fa-linkedin"></i></a></li>-->
+                                                        <!--<li> <a href="https://twitter.com/patrimoniaforum"><i class="fa fa-twitter"></i></a></li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </section>
+                        </div>
+                    </div>-->
+                </div>
+			</div> 
+		</div>
+    </section>
+	<section id="footer">
+        <div class="footer_b">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="footer_bottom">
+                            <p class="text-block"> &copy; Copyright reserved to <span>PF Holding srl</span></p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="footer_mid pull-right">
+                            <ul class="social-contact list-inline">
+                                <li> <a href="https://facebook.com/patrimoniaexpert"><i class="fa fa-facebook"></i></a></li>
+                                <!--<li><a href="#"> <i class="fa fa-linkedin"></i></a></li>-->
+                                <li> <a href="https://twitter.com/patrimoniaforum"><i class="fa fa-twitter"></i></a></li>
+                            </ul>
+							<ul class="menu-footer list-inline">
+                                <li> <a href="chi-siamo.html">Chi siamo</a></li>
+                                <li> <a href="contattaci.html">Contattaci</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+    
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="js/jquery.easing.min.js"></script>
+    <script src="js/jquery.fittext.js"></script>
+    <script src="js/wow.min.js"></script>
+	<script src="js/login.signup.js"></script>
+    <script src="js/cropper.js"></script>
+    <script src="js/summernote.js"></script>
+	
+	<!--[if lt IE 10]>
+		<script src="js/placeholder.js"></script>
+	<![endif]-->
+	
+    <!-- Custom Theme JavaScript -->
+    <script src="js/creative.js"></script>
+
+</body>
+
+</html>

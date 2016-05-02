@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+
+    <title>PatrimoniaExpert</title>
+    
+    <!-- Favicon -->
+    <link rel="shortcut icon" type="image/x-icon" href="favicon.ico">
+
+    <!-- Bootstrap Core CSS -->
+    <link rel="stylesheet" href="css/bootstrap.min.css" type="text/css">
+
+    <!-- Custom Fonts -->
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800' rel='stylesheet' type='text/css'>
+    <link href='http://fonts.googleapis.com/css?family=Merriweather:400,300,300italic,400italic,700,700italic,900,900italic' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="font-awesome/css/font-awesome.min.css" type="text/css">
+
+    <!-- Plugin CSS -->
+    <link rel="stylesheet" href="css/animate.min.css" type="text/css">
+    <link rel="stylesheet" href="css/cropper.css" type="text/css">
+	<link rel="stylesheet" href="css/summernote.css" type="text/css">
+
+    <!-- Creative CSS -->
+    <link rel="stylesheet" href="css/creative.css" type="text/css">
+    
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/custom.css" type="text/css">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+        <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+    <![endif]-->
+
+</head>
+
+<body <if @user_loggedin@ eq 1>id="logged-in"</if><else>id="page-top"</else>>
+    <nav id="mainNav" class="navbar navbar-default navbar-fixed-top">
+        <div class="container-fluid">
+        <div class="row no-gutter">
+            <!-- Brand and toggle get grouped for better mobile display -->
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand page-scroll" href="#page-top">
+                    <img src="images/logo-beta.png" class="img-responsive" alt="">
+                </a>
+            </div>
+
+            <!-- Collect the nav links, forms, and other content for toggling -->
+            <if @user_loggedin@ eq 1>
+                <div class="user">
+                <ul class="nav navbar-nav navbar-right">
+                    <li class="dropdown">
+                      <a href="#" class="login-img dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+                            <img src="@user_portrait@" class="img-responsive" alt="">
+                        </a>
+                      <ul class="dropdown-menu">
+			<li><a href="@user_dashlink@"><span class="glyphicon glyphicon-pencil"></span> Modifica</a></li>
+                        <li><a href="/logout"><span class="glyphicon glyphicon-off"></span> Esci</a></li>
+                      </ul>
+                    </li>
+                </ul>
+            </div>
+            </if>
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav navbar-right">
+                    <li>
+                        <a class="page-scroll" href="#trova-professionista">Trova professionista</a>
+                    </li>
+                    <li>
+                        <a class="page-scroll" href="#cerca-eventi">Cerca eventi</a>
+                    </li>
+                    <if @user_loggedin@ ne 1>
+                    <li>
+                        <a href="#" class="launch-modal" data-modal-id="modal-pre-register">
+                            <span class="glyphicon glyphicon-user"></span> Sign Up
+                        </a>
+                    </li>
+                    <li>
+                        <!--ORIGINAL--<a href="#" class="launch-modal" data-modal-id="modal-login">
+                            <span class="glyphicon glyphicon-log-in"></span> Login
+                        </a>-->
+                        <a href="#" class="launch-modal" data-modal-id="modal-login">
+                            <span class="glyphicon glyphicon-log-in"></span> Login
+                        </a>
+                    </li>
+                </if>
+                </ul>
+            </div>
+            <!-- /.navbar-collapse -->
+        </div>
+        </div>
+        <!-- /.container-fluid -->
+    </nav>
+
+    <header>
+        <div class="header-content">
+            <div class="header-content-inner">
+                <div class="row">
+                    <!--ORIGINAL--<h1><span>PatrimoniaExpert</span></h1>-->
+                    <h1>
+                        <span>PatrimoniaExpert</span>
+                    </h1>
+                    <hr>
+                    <p>Il primo e unico portale dedicato all'incontro<br>
+                    tra offerta e domanda di consulenza qualificata in Italia</p>
+                </div>
+                <div class="row">
+		  <formtemplate id="fast-question">
+                  <div class="col-md-8 col-md-offset-2">
+                    <div class="input-group">
+		      <formwidget id="domanda">
+		      <!-- <input type="text" class="form-control" placeholder="Fai subito la tua domanda agli esperti!">-->
+                      <span class="input-group-btn">
+                        <button class="btn btn-default" type="submit">Invia</button>
+                      </span>
+                    </div><!-- /input-group -->
+                    <a href="#" class="launch-modal domanda-faq" data-modal-id="modal-domanda-faq"><small>Come funziona?</small></a>
+                  </div><!-- /.col-lg-6 -->
+		  </formtemplate>
+                </div><!-- /.row -->
+            </div>
+        </div>
+    </header>
+    <div class="count">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-4 count-container text-center">
+                    <span class="count-icon"><i class="fa fa-question"></i></span>
+                    <span data-refresh-interval="50" data-speed="3000" data-to="724" data-from="0" class="count first-color">724</span>
+                    <h4>Domande fatte</h4>
+                </div><!-- End .count-container -->
+
+                <div class="col-xs-4 count-container text-center count-border">
+                    <span class="count-icon"><i class="fa fa-trophy"></i></span>
+                    <span data-refresh-interval="50" data-speed="3000" data-to="476" data-from="0" class="count first-color">476</span>
+                    <h4>Risposte ottenute</h4>
+                </div><!-- End .count-container -->
+
+                <div class="col-xs-4 count-container text-center">
+                    <span class="count-icon"><i class="fa fa-users"></i></span>
+                    <span data-refresh-interval="50" data-speed="3000" data-to="89" data-from="0" class="count first-color">89</span>
+                    <h4>Consulenti contattati</h4>
+                </div><!-- End .count-container -->
+
+            </div><!-- End .row -->
+        </div><!-- End .container -->
+    </div>
+
+    <section class="bg-primary" id="trova-professionista">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h2 class="section-heading">Trova il miglior consulente in Italia nella gestione del tuo patrimonio</h2>
+                    <h4>Selezionale per area consulenziale di tuo interesse e provincia di attività</h4>
+                    <hr class="light">
+                </div>
+            </div>
+            <formtemplate id="ricerca">
+            <div class="row search">
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="selCompetenza">Area di competenza</label>
+                        <formwidget id="selCompetenza">
+                        <!--<select class="form-control" id="selCompetenza">@selCompetenza_options;noquote</select>-->
+                    </div>
+                </div><!-- /.col-md-4 -->
+                <div class="col-md-4">
+                    <div class="form-group">
+                        <label for="selProvincia">Provincia</label>
+                        <formwidget id="selProvincia">
+                        <!--<select class="form-control" id="selProvincia">@selProvincia_options;noquote</select>-->
+                    </div>
+                </div><!-- /.col-md-4 -->
+                <div class="col-md-4">
+					<div class="form-group">
+						<label for="form-societa">Società</label>
+                        <formwidget id="selSocieta">
+						<!--<select class="form-control" id="selSocieta">@selSocieta_options;noquote</select>-->
+					</div>
+                </div><!-- /.col-md-4 -->
+                <div class="col-md-4">
+                    <div class="form-group pf-specialist-select">
+                        <label for="selSpecialist">Scegli solo tra i PFSpecialist</label>
+                        <select class="form-control" id="selSpecialist">
+                            <option>No</option>
+                            <option>Si</option>
+                        </select>
+                        <a href="" class="launch-modal" data-modal-id="modal-pfspecialist"><small>Chi sono i PFSpecialist?</small></a>
+                    </div>
+                </div><!-- /.col-md-4 -->
+                <div class="col-md-4">
+                    <a class="btn btn-default link-prof-search" href="#">
+                        <span class="glyphicon glyphicon-search"></span> CERCA PROFESSIONISTA
+                    </a>
+                </div><!-- /.col-md-4 -->      
+                <div class="col-md-4">
+                    <a href="#" class="launch-modal blue ricerca-avanzata-btn advanced-search" data-modal-id="modal-beta"><span class="glyphicon glyphicon-wrench"></span> RICERCA AVANZATA</a>
+                </div><!-- /.col-md-4 -->          
+            </div><!-- /.row -->
+        </formtemplate>
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h2 class="section-heading">Ecco le vetrine dei professionisti selezionate per te</h2>
+                    <hr class="light">
+                </div>
+            </div>
+            <div class="row no-gutter">
+                @vetrine_html;noquote@
+            </div>
+       </div>
+    </section>
+<section id="cerca-eventi" class="bg-dark">
+        <div class="container text-center">
+            <div class="call-to-action">
+                <h2>Iscriviti gratuitamente ai prossimi eventi educational</h2>
+                <hr class="light">
+            </div>
+            <div class="row container">
+                <div class="col-xs-12">
+                    <div class="citta">
+                        <h3>Milano - 08/04/2016</h3>
+                    </div>
+                </div>
+                <div class="col-sm-12 col-md-8 col-md-offset-2">
+                    <div class="event-img">
+                        <a href="http://www.salonedelrisparmio.com" target="_blank">
+                            <img src="images/salone-del-risparmio.gif" class="img-responsive">  
+                        </a>
+                    </div>
+                </div>
+                <div class="col-xs-12">
+                    <div class="citta">
+                        <h3>Bari - 16/03/2016</h3>
+                    </div>
+                </div>
+                <div class="col-sm-6 col-md-6 col-xs-12">
+                    <a target="_blank" href="https://www.eventbrite.it/e/biglietti-pfexpo-2016-come-pianificare-al-meglio-il-passaggio-generazionale-dei-propri-patrimoni-personali-e-21446058739">
+                        <img src="http://images.professionefinanza.com/pfexpo/generazbari.jpg" class="img-responsive">
+                    </a>
+                </div>
+                <div class="col-sm-6 col-md-6 col-xs-12">
+                    <a target="_blank" href="https://www.eventbrite.it/e/biglietti-pfexpo-2016-come-prepararsi-ad-affrontare-le-nuove-sfide-con-alberto-cavasin-21446209189">
+                        <img src="http://images.professionefinanza.com/pfexpo/cavasinbari.jpg" class="img-responsive">
+                    </a>
+                </div>
+                <div class="col-sm-6 col-md-6 col-xs-12">
+                    <a target="_blank" href="https://www.eventbrite.it/e/biglietti-pfexpo-2016-finanza-sostenibile-e-sri-21445835070">
+                        <img src="http://images.professionefinanza.com/pfexpo/sribari.jpg" class="img-responsive">
+                    </a>
+                </div>
+                <div class="col-sm-6 col-md-6 col-xs-12">
+                    <a target="_blank" href="https://www.eventbrite.it/e/biglietti-pfexpo-2016-la-solidita-del-sistema-bancario-e-il-bail-in-21445999562">
+                        <img src="http://images.professionefinanza.com/pfexpo/bailinbari.jpg" class="img-responsive">
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="blog" class="bg-primary">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8 col-lg-offset-2 text-center">
+                    <h2 class="section-heading">Blog</h2>
+                    <hr class="light">
+                </div>
+            </div>
+            <div class="row search blue">
+                <div class="col-md-7">
+                    <a href="#">
+                        <img alt="" src="http://placehold.it/700x300" class="img-responsive">
+                    </a>
+                </div>
+                <div class="col-md-5">
+                    <h3>Titolo Articolo 1</h3>
+                    <h4>Sottotitolo</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Laudantium veniam exercitationem expedita laborum at voluptate. Labore, voluptates totam at aut nemo deserunt rem magni pariatur quos perspiciatis atque eveniet unde.</p>
+                    <a href="#" class="btn btn-primary">Leggi tutto <span class="glyphicon glyphicon-chevron-right"></span></a>
+                </div>
+            </div>
+            <hr class="light">
+            <div class="row search blue">
+                <div class="col-md-7">
+                    <a href="#">
+                        <img class="img-responsive" src="http://placehold.it/700x300" alt="">
+                    </a>
+                </div>
+                <div class="col-md-5">
+                    <h3>Titolo Articolo 2</h3>
+                    <h4>Sottotitolo</h4>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ut, odit velit cumque vero doloremque repellendus distinctio maiores rem expedita a nam vitae modi quidem similique ducimus! Velit, esse totam tempore.</p>
+                    <a class="btn btn-primary" href="#">Leggi tutto <span class="glyphicon glyphicon-chevron-right"></span></a>
+                </div>
+            </div>
+    	</div>
+    </section>
+    <section id="footer">
+        <div class="footer_b">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="footer_bottom">
+                            <p class="text-block"> &copy; Copyright reserved to <span>PF Holding srl</span></p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="footer_mid pull-right">
+                            <ul class="social-contact list-inline">
+                                <li> <a href="https://facebook.com/patrimoniaexpert"><i class="fa fa-facebook"></i></a></li>
+                                <!--<li><a href="#"> <i class="fa fa-linkedin"></i></a></li>-->
+                                <li> <a href="https://twitter.com/patrimoniaforum"><i class="fa fa-twitter"></i></a></li>
+                            </ul>
+							<ul class="menu-footer list-inline">
+                                <li> <a href="chi-siamo.html">Chi siamo</a></li>
+                                <li> <a href="contattaci.html">Contattaci</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+<!-- MODAL PRE-REGISTRATION -->
+<div class="modal fade" id="modal-pre-register" tabindex="-1" role="dialog" aria-labelledby="modal-pre-register-label" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                </button>
+                <h3 class="modal-title" id="modal-pre-register-label">Seleziona il tuo profilo</h3>
+                <p><strong>Investitore:</strong><br>
+                Sei alla ricerca di una consulenza qualificata per la gestione del tuo patrimonio? Iscriviti come Investitore</p>
+                <p><strong>Professionista:</strong><br>
+                Sei un consulente qualificato nella gestione del patrimonio? Iscriviti come Professionista e potrai mettere le tuecompetenze al servizio del Cliente</p>
+            </div>
+            <div class="modal-body"> 
+                <div class="row"> 
+                    <ul class="nav nav-pills">
+                        <li class="btnInvestitore"><a data-toggle="tab" href="#tabInvestitore"><span class="fa fa-user"></span> Investitore</a></li>
+                        <li class="btnProfessionista"><a data-toggle="tab" href="#tabProfessionista"><span class="glyphicon glyphicon-briefcase"></span> Professionista Finanziario</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane" id="tabInvestitore">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h3 class="modal-title" id="modal-pre-register-label"><span class="fa fa-user"></span> Iscriviti ora come investitore</h3>
+                                    <p>Segui il form sottostante e ottieni l'accesso immediato:<br>
+                                    <small><strong>I campi con (*) sono obbligatori</strong></small>
+                                    </p>
+                                </div>
+                                <div class="modal-body">
+                                    <formtemplate id="investitori-signup" role="form" action="" method="post" class="registration-form">
+                                        <div class="form-group">
+                                        	<formerror id="form-nome"></formerror>
+                                            <div class="error-message nome">Il campo <strong>nome</strong> è vuoto oppure contiene caratteri errati</div>
+                                            <label class="sr-only" for="form-nome">Nome</label>
+                                            <formwidget id="form-nome">
+                                        </div>
+                                        <div class="form-group">
+                                            <formerror id="form-cognome"></formerror>
+                                        	<div class="error-message cognome">Il campo <strong>cognome</strong> è vuoto oppure contiene caratteri errati</div>
+                                            <label class="sr-only" for="form-cognome">Cognome</label>
+                                            <formwidget id="form-cognome">
+                                        </div>
+                                        <div class="form-group">
+                                        	<div class="error-message nickname">Il campo <strong>nickname</strong> è vuoto</div>
+                                            <label class="sr-only" for="form-nickname">Nickname</label>
+                                            <formwidget id="form-nickname">
+                                            <p><small><span class="fa fa-angle-up"></span> Il Nickname sarà l'unico dato visibile al Professionista</small></p>
+                                        </div>
+                                        <div class="form-group">
+                                        	<div class="error-message email">Il campo <strong>e-mail</strong> è vuoto oppure contiene caratteri errati</div>
+                                            <label class="sr-only" for="form-email">Email</label>
+                                            <formwidget id="form-email">
+                                        </div>
+                                        <div class="form-group">
+                                        	<div class="error-message telefono">Il campo <strong>cellulare</strong> è vuoto oppure non è conforme ad un numero valido</div>
+                                            <label class="sr-only" for="form-telefono">Cellulare</label>
+                                            <formwidget id="form-telefono">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="sr-only" for="form-indirizzo">Indirizzo</label>
+                                            <formwidget id="form-indirizzo">
+                                        </div>
+                                        <div class="form-group">
+                                        	<div class="error-message provincia">Non hai selezionato una Provincia</div>
+                                            <label for="form-provincia">Provincia di residenza (*)</label>
+                                            <formwidget id="form-provincia">
+                                        </div>
+                                        <div class="form-group">
+                                            <label class="sr-only" for="form-professione">Professione</label>
+                                            <formwidget id="form-professione">
+                                        </div>   
+                                        <div class="form-group">
+                                        	<div class="error-message selCompetenza-investitori">Non hai selezionato un'area di consulenza</div>
+                                            <label for="selCompetenza-investitori">In quale area hai bisogno di consulenza qualificata? (*)</label>
+                                            <br>
+                                            <small><span class="fa fa-angle-down"></span> è possibile scegliere più opzioni <span>usando il tasto (ctrl o cmd)</span></small>
+                                            <formwidget id="selCompetenza-investitori">
+                                        </div>
+                                        <div class="form-group">
+                                        	<div class="error-message selAttuale-consulenza">Non hai selezionato il professionista a cui ti rivolgi</div>
+                                            <label for="selAttuale-consulenza">A chi ti rivolgi oggi per la tua consulenza patrimoniale? (*)</label>
+                                            <br>
+                                            <small><span class="fa fa-angle-down"></span> è possibile scegliere più opzioni <span>usando il tasto (ctrl o cmd)</span></small>
+                                            <formwidget id="selAttuale-consulenza">
+                                        </div>
+                                        <div class="btn-more-form-investitore">
+                                            <a class="btn" href="#more-form-investitore" target="_blank" data-toggle="collapse">Aiutaci a consigliarti meglio <span class="fa fa-angle-down"></span></a>
+                                        </div>
+                                        <div id="more-form-investitore" class="collapse">
+                                            <div class="form-group">
+                                            	<div class="error-message eta">Il campo <strong>età</strong> non è un numero</div>
+                                                <label class="sr-only" for="form-eta">Età</label>
+                                                <formwidget id="form-eta">
+                                            </div>
+                                            <div class="form-group">
+                                            	<div class="error-message famiglia">Il campo numero <strong>membri nucleo familiare</strong> non è un numero</div>
+                                                <label class="sr-only" for="form-famiglia">Numero membri nucleo familiare</label>
+                                                <formwidget id="form-famiglia">
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="selImmobili">Immobili di proprietà</label>
+                                                <select class="form-control" id="selImmobili">
+                                                    <option>No</option>
+                                                    <option>Si</option>
+                                                </select>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="selInvesti-amministrato">Investi nel risparmio amministrato (azioni, obbligazioni, titoli di stato)?</label>
+                                                <formwidget id="selInvesti-amministrato">
+                                            </div>
+                                           	<div class="form-group">
+                                                <label for="selInvesti-gestito">Investi nel risparmio gestito (fondi comuni e gestioni patrimoniali)?</label>
+                                                <formwidget id="selInvesti-gestito">
+                                            </div>
+                                           	<div class="form-group">
+                                                <label for="selInvesti-altro">Investi in altri strumenti quotati (certificates, cowered warrant)?</label>
+                                                <formwidget id="selInvesti-altro">
+                                            </div>
+                                           	<div class="form-group">
+                                            	<div class="error-message form-patrimonio-complessivo">Il campo <strong>ammontare patrimonio complessivo</strong> non è un numero</div>
+                                                <label class="sr-only" for="form-patrimonio-complessivo">Ammontare patrimonio complessivo</label>
+                                                <formwidget id="form-patrimonio-complessivo">
+                                            </div>
+                                           	<div class="form-group">
+                                            	<div class="error-message form-disponibilita-finanziaria">Il campo <strong>disponibilità finanziarie</strong> non è un numero</div>
+                                                <label class="sr-only" for="form-disponibilita-finanziaria">Disponibilità finanziarie</label>
+                                                <formwidget id="form-disponibilita-finanziaria">
+                                            </div>  
+                                        </div>    
+                                        <div class="checkbox privacy">
+                                        	<div class="error-message check-privacy">Non hai acconsentito il trattamento dei dati</div>
+                                            <label>
+                                                <input type="checkbox" value="">Acconsento al trattamento dei miei dati
+                                                <br>
+                                                <small><a href="#" target="_blank">Informativa sulla Privacy</a></small>
+                                            </label>
+                                        </div>
+                                        <button type="submit" class="btn">Iscriviti!</button>
+                                    </formtemplate>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="tabProfessionista">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h3 class="modal-title" id="modal-pre-register-label"><span class="glyphicon glyphicon-briefcase"></span> Iscriviti ora come professionista finanziario</h3>
+                                    <p>Segui il form sottostante e ottieni l'accesso immediato:<br>
+                                    <small><strong>I campi con (*) sono obbligatori</strong></small></p>
+                                </div>
+                                <div class="modal-body">
+                                  	<formtemplate id="professionisti-signup" role="form" action="" method="post" class="registration-form">
+                                    	<div class="form-group">
+                                        	<div class="error-message nome">Il campo <strong>nome</strong> è vuoto oppure contiene caratteri errati</div>
+                                            <label class="sr-only" for="form-nome">Nome</label>
+                                            <formwidget id="form-nome">
+                                        </div>
+                                        <div class="form-group">
+                                        	<div class="error-message cognome">Il campo <strong>cognome</strong> è vuoto oppure contiene caratteri errati</div>
+                                            <label class="sr-only" for="form-cognome">Cognome</label>
+					    					<formwidget id="form-cognome">
+                                        </div>
+                                        <div class="form-group">
+                                        	<div class="error-message nickname">Il campo <strong>nickname</strong> è vuoto</div>
+                                            <label class="sr-only" for="form-nickname">Nickname</label>
+                                            <formwidget id="form-nickname">
+                                        </div>
+                                        <div class="form-group">
+                                        	<div class="error-message email">Il campo <strong>e-mail</strong> è vuoto oppure contiene caratteri errati</div>
+                                            <label class="sr-only" for="form-email">Email</label>
+					    					<formwidget id="form-email">
+                                        </div>
+                                        <div class="form-group">
+                                        	<div class="error-message telefono">Il campo <strong>cellulare</strong> è vuoto oppure non è conforme ad un numero valido</div>
+                                            <label class="sr-only" for="form-telefono">Cellulare</label>
+					    					<formwidget id="form-telefono">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="selRuolo-prof">Ruolo professionale</label>
+                                            <formwidget id="selRuolo-prof">
+                                        </div>
+                                        <div class="form-group">
+                                        	<label class="sr-only" for="form-societa">Società</label>
+                                        	<formwidget id="selSocieta">
+                                            <div class="form-group private-company">
+                                            	<small>Inserisci la tua società</small>
+                                        		<formwidget id="form-societa">
+                                        	</div>
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="selCompetenza-professionisti">Area consulenziale di competenza</label>
+                                            <br>
+                                            <small>è possibile scegliere più opzioni <span>usando il tasto (ctrl o cmd)</span></small>
+					    					<formwidget id="selCompetenza-professionisti">
+                                        </div>
+                                        <div class="form-group">
+                                        	<formerror id="selProvincia-attivita"></formerror>
+                                            <div class="error-message selProvincia-attivita">Le Province di attività selezionabili possono essere al massimo 5</div>
+                                            <label for="selProvincia-attivita">Provincia di attività</label>
+                                            <br>
+                                            <small>è possibile scegliere fino a 5 province <span>usando il tasto (ctrl o cmd)</span></small>
+					    					<formwidget id="selProvincia-attivita">
+                                        </div>
+                                        <div class="checkbox privacy">
+                                        	<div class="error-message check-privacy">Non hai acconsentito il trattamento dei dati</div>
+                                            <label>
+                                                <input type="checkbox" value="">Acconsento al trattamento dei miei dati
+                                                <br>
+                                                <small><a href="#" target="_blank">Informativa sulla Privacy</a></small>
+                                            </label>
+                                        </div>
+                                        <button type="submit" class="btn btnSign-prof">Iscriviti!</button>
+                                    </formtemplate>
+                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- MODAL LOGIN -->
+<div class="modal fade" id="modal-login" tabindex="-1" role="dialog" aria-labelledby="modal-login-label" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                </button>
+                <h3 class="modal-title" id="modal-login-label">Login</h3>
+                <p>Accedi al tuo account:</p>
+            </div>
+            <div class="modal-body">
+                <formtemplate id="login" role="form" action="" method="post" class="registration-form">
+                    <div class="form-group">
+                        <label class="sr-only" for="form-username">Username</label>
+                        <formwidget id="form-username">
+                    </div>
+                    <div class="form-group">
+                        <label class="sr-only" for="form-password">Password</label>
+                        <formwidget id="form-password">
+                    </div>
+                    <div class="checkbox resta-collegato">
+                        <label>
+                            <formwidget id="persistent">Resta collegato
+                            <br>
+                            <small><a href="password-dimenticata.html" target="_blank">Hai dimenticato la password?</a></small>
+                        </label>
+                    </div>
+                    <button class="btn" type="submit">Login!</button>
+                    <formerror id="form-username"></formerror>
+                    <formerror id="form-password"></formerror>
+                </formtemplate>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- MODAL DOMANDA FAQ -->
+<div class="modal fade" id="modal-domanda-faq" tabindex="-1" role="dialog" aria-labelledby="modal-domanda-faq-label" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                </button>
+                <h3 class="modal-title" id="modal-domanda-faq-label">Come funziona?</h3>
+            </div>
+            <div class="modal-body">   
+                <p>La domanda sarà valutata da un nostro moderatore che la girerà a tutti i professionisti esperti nell’area  consulenziale di riferimento. Potrai fare questo prima domanda in modo assolutamente gratuito e troverai le varie risposte fornite dai professionisti nella tua area utente personale. Domande e risposte non saranno mai rese pubbliche.</p>    
+            </div>
+        </div>
+    </div>
+</div>
+<!-- MODAL CHI SONO I PFSPECIALIST -->
+<div class="modal fade" id="modal-pfspecialist" tabindex="-1" role="dialog" aria-labelledby="modal-pfspecialist-label" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                </button>
+                <h3 class="modal-title" id="modal-pfspecialist-label">Chi sono i PFSpecialist?</h3>
+            </div>
+            <div class="modal-body">   
+                <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vivamus vel est sed velit rhoncus pharetra quis eget enim. Mauris in dapibus velit. Cras tempus, est at elementum consectetur, libero eros viverra mi, in cursus justo turpis sit amet eros. Donec vitae felis massa. Duis ut neque et lorem feugiat elementum rhoncus quis massa. Cras in tincidunt lacus, vitae ultricies massa. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Duis vel dui at lectus dapibus tempor et scelerisque ligula. Ut hendrerit dictum dui vel dignissim. Suspendisse sit amet neque ut nunc tincidunt posuere nec tristique orci. Pellentesque gravida enim non nisl tempor lobortis. Nulla at lacus sem.</p>    
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- MODAL BETA -->
+<div class="modal fade" id="modal-beta" tabindex="-1" role="dialog" aria-labelledby="modal-beta-label" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                </button>
+            </div>
+            <div class="modal-body">   
+                <p class="text-center">Non ancora disponibile in <strong>VERSIONE <span class="yellow">BETA</span></strong></p>    
+            </div>
+        </div>
+    </div>
+</div>
+    
+    
+    <!-- jQuery -->
+    <script src="js/jquery.js"></script>
+
+    <!-- Bootstrap Core JavaScript -->
+    <script src="js/bootstrap.min.js"></script>
+
+    <!-- Plugin JavaScript -->
+    <script src="js/jquery.easing.min.js"></script>
+    <script src="js/jquery.fittext.js"></script>
+    <script src="js/wow.min.js"></script>
+	<script src="js/login.signup.js"></script>
+    <script src="js/cropper.js"></script>
+    <script src="js/summernote.js"></script>
+	
+	<!--[if lt IE 10]>
+		<script src="js/placeholder.js"></script>
+	<![endif]-->
+	
+    <!-- Custom Theme JavaScript -->
+    <script src="js/creative.js"></script>
+
+</body>
+
+</html>
+
