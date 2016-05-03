@@ -55,7 +55,7 @@ db_multirow \
 	set view_url [export_vars -base "domande-gest" {domanda_id}]
 	set return_url "/amministrazione/domande-list"
 	set stato_id 3
-	set approve_url [export_vars -base "domanda-stato" {domanda_id return_url stato_id}]
+	set approve_url [export_vars -base "/domanda-stato" {domanda_id return_url stato_id}]
 	set stato_id 4
-	set quash_url [export_vars -base "domanda-stato" {domanda_id return_url stato_id}]
+	set quash_url [export_vars -base "/domanda-stato" {domanda_id return_url stato_id}]
     }
