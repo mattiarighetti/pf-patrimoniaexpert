@@ -51,7 +51,7 @@ ad_form -name fast-question \
 	#Estrae next domanda_id
 	set domanda_id [db_string query "select coalesce(max(domanda_id) + trunc(random()*99), trunc(random()*99)) from pe_domande"]
 	set investitore_id [db_string query "select investitore_id from pe_investitori where user_id = [ad_conn user_id]"]
-	db_dml query "insert into pe_domande (domanda_id, testo, investitore_id) values (:domanda_id, :domanda, :investitore_id)"
+	db_dml query "insert into pe_domande (domanda_id, testo, investitore_id, stato_id) values (:domanda_id, :domanda, :investitore_id, 1, current_timestamp)"
     } -after_submit {
 	ad_returnredirect [export_vars -base "domanda" {domanda_id}]
 	ad_script_abort

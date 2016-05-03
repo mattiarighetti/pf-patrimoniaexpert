@@ -29,9 +29,10 @@ if {$user_portrait eq ""} {
 set investitore_id [db_string query "select investitore_id from pe_investitori where user_id = [ad_conn user_id]"]
 
 #Estrazione domande e risposte
-set domande_html "<table class=\"table\"><tr><th>Domanda</th><th>Risposte</th><th>Data</th><th></th></tr>"
-db_foreach query "select d.domanda_id, d.testo, to_char(d.timestamp, 'DD/MM/YYYY alle HH24:MI') as timestamp, case when count(*) > 0 then count(*)::text else 'Ancora nessuna risposta.' end as risposte from pe_domande d, pe_risposte r where d.investitore_id = :investitore_id and r.domanda_id = d.domanda_id group by d.domanda_id, d.testo, d.timestamp order by timestamp" {
-    append domande_html "<tr><td>$testo</td><td>$risposte</td><td>$timestamp</td><td><a class=\"btn\" href=\"[export_vars -base dashboard-investitore-risposte {domanda_id}]\"><span class=\"glyphicon glyphicon-paperclip\"></span> Vedi le risposte</a></td></tr>"
+set domande_html "<table class=\"table\"><tr><th>Domanda</th><th>Risposte</th><th>Data</th><th>Stato</th><th></th></tr>"
+db_foreach query "select d.domanda_id, d.testo, case when count(risposta_id) > 0 then count(risposta_id)::text else 'Ancora nessuna risposta.' end as risposte, to_char(d.timestamp, 'DD/MM/YYYY alle HH24:MI') as timestamp, case when d.stato_id = 1 then '<span class=\"label label-default\">Bozza</span>' when d.stato_id = 2 then '<span class=\"label label-warning\">In attesa di approvazione</span>' when d.stato_id = 3 then '<span class=\"label label-success\">Aperta</span>' when d.stato_id = 4 then '<span class=\"label label-primary\">Chiusa</span>' when d.stato_id = 5 then '<span class=\"label label-danger\">Non approvata</span>' end as stato from pe_domande d left outer join pe_risposte r on d.domanda_id = r.domanda_id where d.investitore_id = :investitore_id group by d.domanda_id, d.testo, d.timestamp, d.stato_id order by d.timestamp" {
+    # Estraggo conteggio risposte
+    append domande_html "<tr><td>$testo</td><td>$risposte</td><td>$timestamp</td><td>$stato</td><td><a class=\"btn\" href=\"[export_vars -base dashboard-investitore-risposte {domanda_id}]\"><span class=\"glyphicon glyphicon-paperclip\"></span> Vedi le risposte</a></td></tr>"
 }
 append domande_html "</table>"
 ad_return_template

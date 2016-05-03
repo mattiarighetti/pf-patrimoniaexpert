@@ -29,7 +29,26 @@ if {$user_portrait eq ""} {
 #Estrazione ID
 set investitore_id [db_string query "select investitore_id from pe_investitori where user_id = [ad_conn user_id]"]
 #Estrazione generalità della domanda
-db_1row query "select d.testo as domanda, c.denominazione as categoria, d.timestamp as domanda_tempo from pe_domande d, pe_categorie c where c.categoria_id = d.categoria_id and d.domanda_id = :domanda_id"
+db_1row query "select d.testo as domanda, d.stato_id, c.denominazione as categoria, d.timestamp as domanda_tempo from pe_domande d, pe_categorie c where c.categoria_id = d.categoria_id and d.domanda_id = :domanda_id"
+# Generazione bottone per cambio stato
+if {$stato_id == 3} {
+    set questionstatus_html "<a class=\"btn\" href=\"domanda-stato?domanda_id=$domanda_id\"><span class=\"glyphicon glyphicon-folder-close\"></span> Chiudi domanda</a>"
+} else {
+    switch $stato_id {
+	1 {
+	    set questionstatus_html "<span class=\"label label-default\">Bozza</span>"
+	}
+	2 {
+	    set questionstatus_html "<span class=\"label label-warning\">In attesa di approvazione</span>"
+	}
+	4 {
+	    set questionstatus_html "<span class=\"label label-primary\">Chiusa</span>"
+	}
+	5 {
+	    set questionstatus_html "<span class=\"label label-danger\">Non approvata</span>"
+	}
+    }
+}
 #Estrazione risposte
 set risposte_html ""
 db_foreach query "select risposta_id, substring(testo from 0 for 50)||'...' as snippet, testo, domanda_id, to_char(timestamp, 'DD/MM/YYYY alle HH24:MI') as timestamp, professionista_id from pe_risposte where domanda_id = :domanda_id order by timestamp" {

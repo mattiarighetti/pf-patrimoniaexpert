@@ -156,6 +156,7 @@
 					<tr><th>Domanda:</th><td>@domanda@</td></tr>
 					<tr><th>Categoria:</th><td>@categoria@</td></tr>
 					<tr><th>Postata il:</th><td>@domanda_tempo@</td></tr>
+					<tr><th>Stato:</th><td>@questionstatus_html;noquote@</td></tr>
 					<tr><th>Report:</th><td><a class="btn" href="dashboard-investitore-stampa?domanda_id=@domanda_id@"><span class="glyphicon glyphicon-eye-open"></span> Stampa</a></td></tr>
 				      </table>
 											      
