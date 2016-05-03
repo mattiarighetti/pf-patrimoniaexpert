@@ -5,6 +5,7 @@ ad_page_contract {
     @creation-date 23 December 2014
 } {
     orderby:optional
+    {rows_per_page 50}
 }
 set page_title "Newsfeed"
 set context ""
@@ -14,6 +15,9 @@ template::list::create \
     -elements {
 	domanda_id {
 	    label "ID"
+	}
+	categoria {
+	    label "Categoria"
 	}
 	testo {
 	    label "Testo"
@@ -45,13 +49,20 @@ template::list::create \
 	    link_html {title "Banna domanda." onClick "return(confirm('Sei davvero sicuro di voler disapprovare la domanda?'));"}
 	    sub_class narrow
 	}
-    } 
+    } -filters {
+	rows_per_page {
+	    label "Righe per pagine"
+	    values {{Venticinque 25} {Cinquanta 50} {Cento 100}}
+	    where_clause {1=1}
+	    default_value 50
+	}
+    }
 db_multirow \
     -extend {
 	view_url
 	approve_url
 	quash_url
-    } domande query "SELECT d.domanda_id, substring(d.testo from 1 for 50) as testo, d.timestamp, p.first_names||' '||p.last_name as investitore, s.descrizione as stato from pe_domande d, pe_investitori i, persons p, pe_domande_stati s where d.investitore_id = i.investitore_id and i.user_id = p.person_id and d.stato_id = s.stato_id" {
+    } domande query "SELECT d.domanda_id, substring(d.testo from 1 for 50) as testo, d.timestamp, c.denominazione as categoria, p.first_names||' '||p.last_name as investitore, s.descrizione as stato from pe_domande d, pe_investitori i, persons p, pe_domande_stati s, pe_categorie c where d.investitore_id = i.investitore_id and i.user_id = p.person_id and d.stato_id = s.stato_id and d.categoria_id = c.categoria_id" {
 	set view_url [export_vars -base "domande-gest" {domanda_id}]
 	set return_url "/amministrazione/domande-list"
 	set stato_id 3

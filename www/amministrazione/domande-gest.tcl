@@ -39,7 +39,7 @@ ad_form -name domanda \
     } -new_data {
 	# db_dml query "INSERT INTO expo_speakers (speaker_id, nome, cognome, short_cv, partner_id, immagine) VALUES (:speaker_id, :nome, :cognome, :short_cv, :partner_id, 'no-user.jpg')"
     } -edit_data {
-	db_dml query "update pe_domande set stato_id = :stato_id and categoria_id = :categoria_id where domanda_id = :domanda_id"
+	db_dml query "update pe_domande set stato_id = :stato_id, categoria_id = :categoria_id where domanda_id = :domanda_id"
     } -on_submit {
     } -after_submit {
 	ad_returnredirect "domande-list"
