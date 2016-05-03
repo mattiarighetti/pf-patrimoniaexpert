@@ -6,6 +6,7 @@
 <tr>
 <td>
 <a href="professionisti-list">Anagrafiche Professionisti</a>
+<a href="domande-list">Gestione domande</a>
 <a href="newsfeed-list">Gestione articoli</a>
 </td>
 </tr>
