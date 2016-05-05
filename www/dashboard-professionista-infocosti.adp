@@ -98,6 +98,8 @@
                         <li><a href="dashboard-professionista">Home</a></li>
                         <!--<li><a href="#risposte-aperte">Risposte aperte</a></li>
                         <li><a href="#risposte-date">Risposte date</a></li>-->
+			<li><a href="dashboard-professionista-domande">Domande aperte</a></li>
+			<li><a href="dashboard-professionista-risposte">Storico risposte date</a></li>
                         <li><a class="link-menu-vetrina-dettaglio" href="dashboard-professionista-vetrina">Vetrina di dettaglio</a></li>
                         <li class="active"><a href="dashboard-professionista-infocosti">Info costi</a></li>
                         <li><a href="dashboard-professionista-modifica">Modifica account</a></li>

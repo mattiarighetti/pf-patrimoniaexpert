@@ -95,9 +95,11 @@
                 <div class="col-xs-4 col-sm-3 col-md-2 sidebar">
                     <ul class="nav nav-sidebar">
                       <li><a href="dashboard-professionista">Home</a></li>
-                        <!--<li><a href="#risposte-aperte">Risposte aperte</a></li>
-                        <li><a href="#risposte-date">Risposte date</a></li>-->
-                        <li class="active"><a class="link-menu-vetrina-dettaglio" href="vetrina">Vetrina di dettaglio</a></li>
+                      <!--<li><a href="#risposte-aperte">Risposte aperte</a></li>
+                            <li><a href="#risposte-date">Risposte date</a></li>-->
+		      <li><a href="dashboard-professionista-domande">Domande aperte</a></li>
+		      <li><a href="dashboard-professionista-risposte">Storico risposte date</a></li>
+                      <li class="active"><a class="link-menu-vetrina-dettaglio" href="vetrina">Vetrina di dettaglio</a></li>
                         <li><a href="info-costi">Info costi</a></li>
                         <li><a href="dashboard-professionista-modifica">Modifica account</a></li>
                     </ul>
