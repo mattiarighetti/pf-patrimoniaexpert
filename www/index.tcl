@@ -107,22 +107,11 @@ ad_form -name ricerca \
 		ad_script_abort
 	}
 
-#Select competenza
-#set selCompetenza_options ""
-#db_foreach query "select denominazione, categoria_id from pe_categorie order by categoria_id" {
-#    append selCompetenza_options "<option value=${categoria_id}\">${denominazione}</option>"
-#}
-
-#Select provincia
-#set selProvincia_options ""
-#db_foreach query "select denominazione, provincia_id from province order by denominazione" {
-#    append selProvincia_options "<option value=\"${provincia_id}\">${denominazione}</option>"
-#}
-
-#Select societa
-#set selSocieta_options ""
-#db_foreach query "select denominazione, societa_id from pe_societa order by denominazione" {
-#    append selSocieta_options "<option value=\"${societa_id}\">${denominazione}</option>"
-#}
+# Estrazione eventi PatrimoniaMeeting per snippet
+set meeting_html "<div class=\"row container\">"
+db_foreach query "select e.evento_id, e.denominazione, e.descrizione, e.start_time, e.end_time, e.immagine, c.denominazione as luogo, l.denominazione from pm_eventi e, pm_luoghi l, comuni c where e.luogo_id = l.luogo_id and l.comune_id = c.comune_id and e.start_time > current_timestamp order by e.start_time asc limit 6" {
+    append meeting_html "<div class=\"col-sm-6 col-md-6 col-xs-12\"><a target=\"_blank\" href=\"http://www.patrimoniameeting.it/evento?evento_id=$evento_id\"><img src=\"http://www.patrimoniameeting.it/images/eventi_files/$immagine\" class=\"img-responsive\"></a><!--<div class=\"citta\"><h3></h3></div>--></div>"
+}
+append meeting_html "</div>"
 
 ad_return_template

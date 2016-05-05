@@ -212,38 +212,8 @@
                 <h2>Iscriviti gratuitamente ai prossimi eventi educational</h2>
                 <hr class="light">
             </div>
-            <div class="row container">
-			
-                <div class="col-xs-12">
-                    <div class="citta">
-                        <h3>Firenze - 07/06/2016</h3>
-                    </div>
-                </div>
-				<div class="col-sm-6 col-md-6 col-xs-12">
-					<a target="_blank" href="#">
-						<img src="http://images.professionefinanza.com/pfexpo/mifid II-firenze.jpg" class="img-responsive">
-					</a>
-				</div>
-				<div class="col-sm-6 col-md-6 col-xs-12">
-					<a target="_blank" href="#">
-						<img src="http://images.professionefinanza.com/pfexpo/marella-firenze.jpg" class="img-responsive">
-					</a>
-				</div>
-				<div class="col-sm-6 col-md-6 col-xs-12">
-					<div class="event-img">
-						<a target="_blank" href="#">
-							<img src="http://images.professionefinanza.com/pfexpo/impresa-firenze.jpg" class="img-responsive">
-						</a>
-					</div>
-				</div>
-				<div class="col-sm-6 col-md-6 col-xs-12">
-					<div class="event-img">
-						<a target="_blank" href="#">
-							<img src="http://images.professionefinanza.com/pfexpo/bail-in-firenze.jpg" class="img-responsive">
-						</a>
-					</div>		
-				</div>
-                <div class="col-xs-12">
+	      @meeting_html;noquote@
+<!--                <div class="col-xs-12">
                     <div class="citta">
                         <h3>Milano - 08/04/2016</h3>
 						<h4 class="blue text-center"><strong>Come proteggere oggi il proprio patrimonio tra Bail-In, volatilità dei mercati e investimenti immobiliari</strong></h4>
@@ -259,7 +229,7 @@
                     </div>
                 </div>
 				
-            </div>
+            </div>-->
         </div>
     </section>
     <!-- LUCA -->
