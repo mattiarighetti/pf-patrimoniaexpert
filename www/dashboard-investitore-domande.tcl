@@ -30,9 +30,13 @@ set investitore_id [db_string query "select investitore_id from pe_investitori w
 
 #Estrazione domande e risposte
 set domande_html "<table class=\"table\"><tr><th>Domanda</th><th>Risposte</th><th>Data</th><th>Stato</th><th></th></tr>"
-db_foreach query "select d.domanda_id, d.testo, case when count(risposta_id) > 0 then count(risposta_id)::text else 'Ancora nessuna risposta.' end as risposte, to_char(d.timestamp, 'DD/MM/YYYY alle HH24:MI') as timestamp, case when d.stato_id = 1 then '<span class=\"label label-default\">Bozza</span>' when d.stato_id = 2 then '<span class=\"label label-warning\">In attesa di approvazione</span>' when d.stato_id = 3 then '<span class=\"label label-success\">Aperta</span>' when d.stato_id = 4 then '<span class=\"label label-primary\">Chiusa</span>' when d.stato_id = 5 then '<span class=\"label label-danger\">Non approvata</span>' end as stato from pe_domande d left outer join pe_risposte r on d.domanda_id = r.domanda_id where d.investitore_id = :investitore_id group by d.domanda_id, d.testo, d.timestamp, d.stato_id order by d.timestamp" {
+db_foreach query "select d.domanda_id, d.testo, count(risposta_id) as risposte_count, case when count(risposta_id) > 0 then count(risposta_id)::text else 'Ancora nessuna risposta.' end as risposte, to_char(d.timestamp, 'DD/MM/YYYY alle HH24:MI') as timestamp, case when d.stato_id = 1 then '<span class=\"label label-default\">Bozza</span>' when d.stato_id = 2 then '<span class=\"label label-warning\">In attesa di approvazione</span>' when d.stato_id = 3 then '<span class=\"label label-success\">Aperta</span>' when d.stato_id = 4 then '<span class=\"label label-primary\">Chiusa</span>' when d.stato_id = 5 then '<span class=\"label label-danger\">Non approvata</span>' end as stato from pe_domande d left outer join pe_risposte r on d.domanda_id = r.domanda_id where d.investitore_id = :investitore_id group by d.domanda_id, d.testo, d.timestamp, d.stato_id order by d.timestamp desc" {
     # Estraggo conteggio risposte
-    append domande_html "<tr><td>$testo</td><td>$risposte</td><td>$timestamp</td><td>$stato</td><td><a class=\"btn\" href=\"[export_vars -base dashboard-investitore-risposte {domanda_id}]\"><span class=\"glyphicon glyphicon-paperclip\"></span> Vedi le risposte</a></td></tr>"
+    append domande_html "<tr><td>$testo</td><td>$risposte</td><td>$timestamp</td><td>$stato</td><td>"
+    if {$risposte_count > 0} {
+	append domande_html "<a class=\"btn\" href=\"[export_vars -base dashboard-investitore-risposte {domanda_id}]\"><span class=\"glyphicon glyphicon-paperclip\"></span> Vedi le risposte</a>"
+    }
+    append domande_html "</td></tr>"
 }
 append domande_html "</table>"
 ad_return_template

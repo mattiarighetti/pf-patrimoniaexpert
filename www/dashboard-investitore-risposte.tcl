@@ -47,6 +47,9 @@ if {$stato_id == 3} {
 	5 {
 	    set questionstatus_html "<span class=\"label label-danger\">Non approvata</span>"
 	}
+	default {
+	    set questionstatus_html ""
+	}
     }
 }
 #Estrazione risposte
