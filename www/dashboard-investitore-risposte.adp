@@ -96,7 +96,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand page-scroll" href="index">
+                <a class="navbar-brand page-scroll" href="http://www.patrimoniaexpert.it">
                 	<img src="images/logo-beta.png" class="img-responsive" alt="">
                 </a>
             </div>
@@ -118,10 +118,10 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right main-menu">
                     <li>
-                        <a href="index.html">Trova professionista</a>
+                        <a href="http://patrimoniaexpert.it/#trova-professionista">Trova professionista</a>
                     </li>
                     <li>
-                        <a href="index.html">Cerca eventi</a>
+                        <a href="http://patrimoniaexpert.it/#cerca-eventi">Cerca eventi</a>
                     </li>
                 </ul>
             </div>
@@ -136,13 +136,13 @@
             <div class="row">
               <div class="col-xs-4 col-sm-3 col-md-2 sidebar">
                     <ul class="nav nav-sidebar">
-                    	<li ><a href="dashboard-investitori">Home</a></li>
+                    	<li ><a href="dashboard-investitore">Home</a></li>
                         <li><a href="domanda">Fai una domanda</a></li>
                         <li class="active"><a href="dashboard-investitore-domande">Storico domande</a></li>
 <!--                     <li><a href="#rating" data-toggle="tab">Rating</a></li>
                         <li><a href="#e-mail-eventi" data-toggle="tab">E-Mail eventi</a></li>-->
                         <li><a href="ricerca-avanzata">Cerca Professionista</a></li>
-                        <li><a href="dashboard-investitore-modifica">Modifica account</a></li>
+                        <li><a href="http://www.patrimoniaexpert.it/dashboard-investitori-modifica">Modifica account</a></li>
                     </ul>
                 </div>
                 <div class="col-xs-offset-4 col-xs-8 col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">

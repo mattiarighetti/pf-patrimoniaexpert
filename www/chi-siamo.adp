@@ -55,7 +55,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand page-scroll" href="index.html">
+                <a class="navbar-brand page-scroll" href="http://www.patrimoniaexpert.it">
                 	<img src="images/logo-beta.png" class="img-responsive" alt="">
                 </a>
             </div>
@@ -64,10 +64,10 @@
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
                     <li>
-                        <a class="page-scroll" href="index.html">Trova professionista</a>
+                        <a class="page-scroll" href="http://patrimoniaexpert.it/#trova-professionista">Trova professionista</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="index.html">Cerca eventi</a>
+                        <a class="page-scroll" href="http://patrimoniaexpert.it/#cerca-eventi">Cerca eventi</a>
                     </li>
                 	<li>
                     	<a href="#" class="launch-modal" data-modal-id="modal-pre-register">
@@ -75,7 +75,7 @@
                         </a>
                     </li>
                 	<li>
-                    	<a href="#" class="launch-modal" data-modal-id="modal-login">
+                    	<a href="/login">
                         	<span class="glyphicon glyphicon-log-in"></span> Login
                         </a>
                     </li>
@@ -121,7 +121,8 @@
             </div>
     	</div>              
     </section>
-	<section id="footer">
+
+<section id="footer">
         <div class="footer_b">
             <div class="container">
                 <div class="row">
@@ -147,6 +148,56 @@
             </div>
         </div>
     </section>
+</div>
+<!-- MODAL PRE-REGISTRATION -->
+<div class="modal fade" id="modal-pre-register" tabindex="-1" role="dialog" aria-labelledby="modal-pre-register-label" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">
+                    <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                </button>
+                <h3 class="modal-title" id="modal-pre-register-label">Seleziona il tuo profilo</h3>
+                <p><strong>Investitore:</strong><br>
+                Sei alla ricerca di una consulenza qualificata per la gestione del tuo patrimonio? Iscriviti come Investitore</p>
+                <p><strong>Professionista:</strong><br>
+                Sei un consulente qualificato nella gestione del patrimonio? Iscriviti come Professionista e potrai mettere in luce le tue competenze</p>
+            </div>
+            <div class="modal-body"> 
+              <div class="row"> 
+                    <ul class="nav nav-pills">
+                        <li class="btnInvestitore"><a href="signup-investitori"><span class="fa fa-user"></span> Investitore</a></li>
+                        <li class="btnProfessionista"><a href="signup-professionisti"><span class="glyphicon glyphicon-briefcase"></span> Professionista</a></li>
+                    </ul>
+                    <div class="tab-content">
+                        <div class="tab-pane" id="tabInvestitore">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h3 class="modal-title" id="modal-pre-register-label"><span class="fa fa-user"></span> Iscriviti ora come investitore</h3>
+                                    <p>Compila il form sottostante e ottieni l'accesso immediato:<br>
+                                    <small><strong>I campi con (*) sono obbligatori</strong></small>
+                                    </p>
+                                </div>
+                                <div class="modal-body">
+                                </div>
+                            </div>
+                        </div>
+                        <div class="tab-pane" id="tabProfessionista">
+                            <div class="modal-content">
+                                <div class="modal-header">
+                                    <h3 class="modal-title" id="modal-pre-register-label"><span class="glyphicon glyphicon-briefcase"></span> Iscriviti ora come professionista finanziario</h3>
+                                    <p>Compila il form sottostante e ottieni l'accesso immediato:<br>
+                                    <small><strong>I campi con (*) sono obbligatori</strong></small></p>
+                                </div>
+                                <div class="modal-body">
+                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 </div>
  
     <!-- jQuery -->

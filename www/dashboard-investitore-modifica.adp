@@ -2,7 +2,7 @@
 <html lang="en">
 
 <head>
-
+    <link rel="stylesheet" href="http://patrimoniaexpert.cloudapp.net/resources/acs-templating/forms.css" type="text/css" media="all">
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -114,18 +114,19 @@
                                     <div class="col-xs-12">
                                         <h2 class="section-heading">Modifica Account</h2>
                                         <p>Qui puoi modificare i tuoi dati account:</p>
-                                        <form role="form" action="" method="post" class="modifica-account-investitori-form">
-                                        	<div class="form-group file-upload">
+					<formtemplate id="modifica"></formtemplate>
+                                        <!-- <form role="form" action="" method="post" class="modifica-account-investitori-form">
+                                          <div class="form-group file-upload">
                                             	<span><strong>Immagine profilo:</strong></span>
                                                 <br>
                                                 <small>puoi caricare un file di max: 1MB</small>
-                                        		<!--<input type="file" name="pic" accept="image/jpeg">-->
+                                        		<!--<input type="file" name="pic" accept="image/jpeg">--
                                                 
-                                                 <!-- Cropper User -->
+                                                 <!-- Cropper User --
                                                   <div class="cropper-user">
                                                     <div class="row">
                                                       <div class="col-md-12">
-                                                        <!-- <h3 class="page-header">Demo:</h3> -->
+                                                        <!-- <h3 class="page-header">Demo:</h3> --
                                                         <div class="img-container">
                                                           <img src="images/default/user.jpg" alt="Picture">
                                                         </div>
@@ -133,7 +134,7 @@
                                                     </div>
                                                     <div class="row">
                                                       <div class="col-md-12 docs-buttons">
-                                                        <!-- <h3 class="page-header">Toolbar:</h3> -->
+                                                        <!-- <h3 class="page-header">Toolbar:</h3> --
                                                         <div class="btn-group">
                                                           <button class="btn btn-primary" data-method="zoom" data-option="0.1" type="button" title="Zoom In">
                                                             <span class="docs-tooltip" data-toggle="tooltip" title="Zoom in">
@@ -187,7 +188,7 @@
                                                           </span>
                                                         </button>
                                                         
-                                                        <!-- Show the cropped image in modal -->
+                                                        <!-- Show the cropped image in modal --
                                                         <div class="modal fade docs-cropped" id="getCroppedCanvasModal" aria-hidden="true" aria-labelledby="getCroppedCanvasTitle" role="dialog" tabindex="-1">
                                                           <div class="modal-dialog">
                                                             <div class="modal-content">
@@ -199,16 +200,16 @@
                                                               </div>
                                                               <!-- <div class="modal-footer">
                                                                 <button class="btn btn-primary" data-dismiss="modal" type="button">Close</button>
-                                                              </div> -->
+                                                              </div> --
                                                             </div>
                                                           </div>
-                                                        </div><!-- /.modal -->
-                                                      </div><!-- /.docs-buttons -->
+                                                        </div><!-- /.modal --
+                                                      </div><!-- /.docs-buttons --
                                                     </div>
 													
                                                   </div>
                                                 
-                                                  <!-- Alert -->
+                                                  <!-- Alert --
                                                   <div class="docs-alert"><span class="warning message"></span></div>
                                                   
                                             </div>         
@@ -260,7 +261,7 @@
                                                 <button type="submit" class="btn modifica-account"><span class="glyphicon glyphicon-pencil"></span> Modifica Account</button>
                                                 <button type="submit" class="btn elimina-account danger"><span class="glyphicon glyphicon-trash"></span> Elimina Account</button>
                                             </div>
-                                   		</form>    
+                                   		</form>    -->
                             		</div>
                             	</div>    
                             </div>

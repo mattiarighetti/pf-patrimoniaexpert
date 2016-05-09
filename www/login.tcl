@@ -75,10 +75,6 @@ ad_form -name login \
 		set return_url "http://www.patrimoniaexpert.it/"
 	    }
 	}
-#	set ad_session_id [ad_get_cookie ad_session_id]
-#	set ad_user_login [ad_get_cookie ad_user_login]	
-#	ad_returnredirect -allow_complete_url [export_vars -base "http://www.patrimoniameeting.it/login" {return_url ad_session_id ad_user_login}]
-	set user_id [ad_conn user_id]
-	ad_returnredirect -allow_complete_url [export_vars -base "http://www.patrimoniameeting.it/login" {user_id return_url}]
+	ad_returnredirect login-pe
 	ad_script_abort
     }
