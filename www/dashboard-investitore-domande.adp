@@ -136,13 +136,13 @@
             <div class="row">
               <div class="col-xs-4 col-sm-3 col-md-2 sidebar">
                     <ul class="nav nav-sidebar">
-                    	<li ><a href="dashboard-investitori">Home</a></li>
+                    	<li ><a href="dashboard-investitore">Home</a></li>
                         <li><a href="domanda">Fai una domanda</a></li>
                         <li class="active"><a href="dashboard-investitore-domande">Storico domande</a></li>
 <!--                     <li><a href="#rating" data-toggle="tab">Rating</a></li>
                         <li><a href="#e-mail-eventi" data-toggle="tab">E-Mail eventi</a></li>-->
-                        <li><a href="ricerca-avanzata.html">Cerca Professionista</a></li>
-                        <li><a class="link-menu-modifica-account" href="dashboard-investitori-modifica-account.html">Modifica account</a></li>
+                        <li><a href="ricerca">Cerca Professionista</a></li>
+                        <li><a class="link-menu-modifica-account" href="dashboard-investitore-modifica">Modifica account</a></li>
                     </ul>
                 </div>
                 <div class="col-xs-offset-4 col-xs-8 col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">

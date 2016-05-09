@@ -142,7 +142,7 @@
 <!--                     <li><a href="#rating" data-toggle="tab">Rating</a></li>
                         <li><a href="#e-mail-eventi" data-toggle="tab">E-Mail eventi</a></li>-->
                         <li><a href="ricerca-avanzata">Cerca Professionista</a></li>
-                        <li><a href="http://www.patrimoniaexpert.it/dashboard-investitori-modifica">Modifica account</a></li>
+                        <li><a href="http://www.patrimoniaexpert.it/dashboard-investitore-modifica">Modifica account</a></li>
                     </ul>
                 </div>
                 <div class="col-xs-offset-4 col-xs-8 col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main">
