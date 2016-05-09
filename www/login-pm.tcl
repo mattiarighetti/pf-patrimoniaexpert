@@ -4,7 +4,7 @@ ad_page_contract {
     @author Mattia Righetti (mattia.righetti@professionefinanza.com)
     @creation-date Monday 9 May 2016
 } {
-    return_url
+    return_url:optional
 }
 set user_id [ad_conn user_id]
 if {![info exists return_url]} {
