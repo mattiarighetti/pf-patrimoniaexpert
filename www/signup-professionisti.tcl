@@ -21,6 +21,7 @@ if {[ad_conn user_id]} {
 #FORM: SignUp professionisti
 
 ad_form -name professionisti_signup \
+    -export {return_url} \
     -form {
 	{nome:text
 	    {label "Nome"}

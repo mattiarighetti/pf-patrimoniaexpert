@@ -19,6 +19,7 @@ if {[ad_conn user_id]} {
 
 #FORM SignUp investitori
 ad_form -name investitori_signup \
+    -export {return_url} \
     -form {
 	{nome:text
 	    {label "Nome"}
@@ -138,6 +139,8 @@ ad_form -name investitori_signup \
 	} else {
 	    ns_log notice ppp $creation_info(creation_status)
 	}
+
+	
 	# Genera nuovo ID Investitore
 	set investitore_id [db_string query "SELECT COALESCE(MAX(investitore_id)+ trunc(random()*99+1),1) FROM pe_investitori"]
 	
@@ -532,7 +535,7 @@ ad_form -name investitori_signup \
 	    </html>
 	}
 	acs_mail_lite::send -to_addr ${email} -from_addr "no-reply@patrimoniaexpert.it" -mime_type "text/html" -subject $subject -body $body
-	ad_returnredirect -allow_complete_url $return_url
+	ad_returnredirect [export_vars -base "login-pm" {return_url}]
 	ad_script_abort
     }
 ad_return_template
