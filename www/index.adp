@@ -39,7 +39,15 @@
         <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
+    <meta property="og:title" content="PatrimoniaExpert">
+    <meta property="og:url" content="http://www.patrimoniaexpert.it">
+                    <meta property="og:description" content="Il primo e unico portale dedicato all'incontro tra offerta e domanda di consulenza finanziaria. La comodità di non lasciare l'ufficio.">
+		    <meta property="og:image" content="http://images.professionefinanza.com/special-guest/patrimoniaexpert-social.jpg">
+		    <meta property="og:image:width" content="1230">
+		    <meta property="og:image:height" content="730">
+		    
 
+    
 </head>
 
 <body <if @user_loggedin@ eq 1>id="logged-in"</if><else>id="page-top"</else>>
@@ -288,8 +296,8 @@
             <div class="modal-body"> 
               <div class="row"> 
                     <ul class="nav nav-pills">
-                        <li class="btnInvestitore"><a href="signup-investitori"><span class="fa fa-user"></span> Investitore</a></li>
-                        <li class="btnProfessionista"><a href="signup-professionisti"><span class="glyphicon glyphicon-briefcase"></span> Professionista</a></li>
+                        <li class="btnInvestitore"><a href="signup-investitori<if @return_url@ ne "">?return_url=@return_url@</if>"><span class="fa fa-user"></span> Investitore</a></li>
+                        <li class="btnProfessionista"><a href="signup-professionisti<if @return_url@ ne "">?return_url=@return_url@</if>"><span class="glyphicon glyphicon-briefcase"></span> Professionista</a></li>
                     </ul>
                     <div class="tab-content">
                         <div class="tab-pane" id="tabInvestitore">

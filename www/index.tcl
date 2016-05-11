@@ -1,6 +1,7 @@
 ad_page_contract {
     @author Mattia Righetti
 } {
+    {return_url ""}
 }
 set page_title "PatrimoniaExpert"
 set context ""

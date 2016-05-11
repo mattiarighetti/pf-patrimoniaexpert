@@ -11,13 +11,19 @@ set context ""
 set bg_images [list header.jpg header1.jpg header2.jpg header3.jpg header4.jpg]
 set backgroundimage [lindex $bg_images [expr {int(rand()*[llength $bg_images])}]]
 
+#Imposta url di ritorno
+if {![info exists return_url]} {
+    if {[db_0or1row query "select * from pe_professionisti where user_id = [ad_conn user_id] limit 1"]} {
+	set return_url "http://www.patrimoniaexpert.it/dashboard-professionista"
+    } else {
+	set return_url "http://www.patrimoniaexpert.it/"
+    }
+}
 
 #Controllo su utenza
 if {[ad_conn user_id]} {
-  ad_returnredirect "index"
-  set user_loggedin 1
-} else {
-    set user_loggedin 0
+    ad_returnredirect [export_vars -base "login-pm" {return_url}]
+    ad_script_abort
 }
 
 #FORM: login
@@ -68,13 +74,6 @@ ad_form -name login \
 	    }
 	}
     } -after_submit {
-	if {![info exists return_url]} {
-	    if {[db_0or1row query "select * from pe_professionisti where user_id = [ad_conn user_id] limit 1"]} {
-		set return_url "http://www.patrimoniaexpert.it/dashboard-professionista"
-	    } else {
-		set return_url "http://www.patrimoniaexpert.it/"
-	    }
-	}
-	ad_returnredirect login-pm
+	ad_returnredirect [export_vars -base "login-pm" {return_url}]
 	ad_script_abort
     }

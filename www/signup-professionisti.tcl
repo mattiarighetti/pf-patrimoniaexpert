@@ -7,12 +7,17 @@ ad_page_contract {
 set page_title "PatrimoniaExpert"
 set context ""
 
+#Imposta URL di ritorno
+if {![info exists return_url]} {
+    set return_url "login-pm"
+}
+
 #Controllo su utenza
 if {[ad_conn user_id]} {
-    ad_returnredirect "index"
-} else {
-    set user_loggedin 0
+    ad_returnredirect -allow_complete_url $return_url
+    ad_script_abort
 }
+
 #FORM: SignUp professionisti
 
 ad_form -name professionisti_signup \
@@ -480,7 +485,7 @@ ad_form -name professionisti_signup \
 	    </html>
 	}
 	acs_mail_lite::send -to_addr ${email} -from_addr "no-reply@patrimoniaexpert.it" -mime_type "text/html" -subject $subject -body $body
-        ad_returnredirect "dashboard-professionista"
+        ad_returnredirect -allow_complete_url $return_url
         ad_script_abort
     }
 

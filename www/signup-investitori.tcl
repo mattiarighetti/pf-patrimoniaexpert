@@ -1,16 +1,20 @@
 ad_page_contract {
     @author Mattia Righetti
 } {
+    return_url:optional
 }
 set page_title "PatrimoniaExpert"
 set context ""
 
+#Imposta URL di ritorno
+if {![info exists return_url]} {
+    set return_url "login-pm"
+}
+
 #Controllo su utenza
 if {[ad_conn user_id]} {
-  ad_returnredirect "index"
-  set user_loggedin 1
-} else {
-    set user_loggedin 0
+    ad_returnredirect -allow_complete_url $return_url
+    ad_script_abort
 }
 
 #FORM SignUp investitori
@@ -505,7 +509,7 @@ ad_form -name investitori_signup \
 	    </html>
 	}
 	acs_mail_lite::send -to_addr ${email} -from_addr "no-reply@patrimoniaexpert.it" -mime_type "text/html" -subject $subject -body $body
-	ad_returnredirect "/"
+	ad_returnredirect -allow_complete_url $return_url
 	ad_script_abort
     }
 ad_return_template
