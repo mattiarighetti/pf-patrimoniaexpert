@@ -34,9 +34,11 @@ ad_form -name investitori_signup \
 	}
 	{telefono:text
 	    {label "Telefono"}
+	    {html {"maxlength" "20"}}
 	}
 	{indirizzo:text,optional
 	    {label "Indirizzo"}
+	    {html {"maxlength" "100"}}
 	}
 	{provincia_id:integer(select),optional
 	    {label "Provincia di residenza"}
@@ -44,6 +46,7 @@ ad_form -name investitori_signup \
 	}
 	{professione:text,optional
 	    {label "Professione"}
+	    {html {"maxlength" "100"}}
 	}
 	{competenze:integer(checkbox),multiple
 	    {label "In quale area hai bisogno di consulenza qualificata?"}
@@ -55,9 +58,11 @@ ad_form -name investitori_signup \
 	}
 	{eta:text,optional
 	    {label "Età"}
+	    {html {"maxlength" "10"}}
 	}
 	{famiglia:text,optional
 	    {label "Numero membri nucleo familiare"}
+	    {html {"maxlength" "5"}}
 	}
 	{immobili:text(radio),optional
 	    {label "Immobili di proprietà"}
@@ -77,19 +82,41 @@ ad_form -name investitori_signup \
 	}
 	{patrimonio_complessivo:text,optional
 	    {label "Ammontare patrimonio complessivo"}
+	    {html {"maxlength" "10"}}
 	}
 	{disponibilita_finanziaria:text,optional
 	    {label "Disponibilità finanziaria"}
+	    {html {"maxlength" "10"}}
 	}
-	} -validate {
-		{nome
-		    {[string length ${nome}] > 2}
-			"Il campo <strong>nome</strong> è vuoto oppure contiene caratteri errati"
-		}
-		{cognome 
-		    {[string length ${cognome}] > 2}
-			"Il campo <strong>cognome</strong> è vuoto oppure contiene caratteri errati"
-		}
+    } -validate {
+	{nome
+	    {[string length ${nome}] > 2}
+	    "Il campo <strong>nome</strong> è vuoto oppure contiene caratteri errati"
+	}
+	{cognome 
+	    {[string length ${cognome}] > 2}
+	    "Il campo <strong>cognome</strong> è vuoto oppure contiene caratteri errati"
+	}
+	{telefono
+	    {[string length $telefono] > 20}
+	    "Il campo <strong>Telefono</strong> può contenere al massimo 20 caratteri."
+	}
+	{indirizzo
+	    {[string length $indirizzo] > 100}
+	    "Il campo <strong>Indirizzo</strong> può contenere al massimo 100 caratteri."
+	}
+	{professione
+	    {[string length $professione] > 100}
+	    "Il campo <strong>Professione</strong> può contenere al massimo 100 caratteri."
+	}
+	{eta
+	    {[string length $eta] > 10}
+	    "Il campo <strong>Età</strong> può contenere al massimo 10 caratteri."
+	}
+	{password
+	    {[string length $password] > 40}
+	    "Il campo <strong>Password</strong> può contenere al massimo 40 caratteri."
+	}
     } -on_submit {
 	#Create OpenACS User
 	set user_id [db_nextval acs_object_id_seq]
