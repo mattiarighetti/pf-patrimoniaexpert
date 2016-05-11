@@ -98,19 +98,19 @@ ad_form -name investitori_signup \
 	    "Il campo <strong>cognome</strong> è vuoto oppure contiene caratteri errati"
 	}
 	{telefono
-	    {[string length $telefono] > 20}
+	    {[string length $telefono] < 20}
 	    "Il campo <strong>Telefono</strong> può contenere al massimo 20 caratteri."
 	}
 	{indirizzo
-	    {[string length $indirizzo] > 100}
+	    {[string length $indirizzo] < 100}
 	    "Il campo <strong>Indirizzo</strong> può contenere al massimo 100 caratteri."
 	}
 	{professione
-	    {[string length $professione] > 100}
+	    {[string length $professione] < 100}
 	    "Il campo <strong>Professione</strong> può contenere al massimo 100 caratteri."
 	}
 	{eta
-	    {[string length $eta] > 10}
+	    {[string length $eta] < 10}
 	    "Il campo <strong>Età</strong> può contenere al massimo 10 caratteri."
 	}
     } -on_submit {
