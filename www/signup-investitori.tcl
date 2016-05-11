@@ -113,10 +113,6 @@ ad_form -name investitori_signup \
 	    {[string length $eta] > 10}
 	    "Il campo <strong>Età</strong> può contenere al massimo 10 caratteri."
 	}
-	{password
-	    {[string length $password] > 40}
-	    "Il campo <strong>Password</strong> può contenere al massimo 40 caratteri."
-	}
     } -on_submit {
 	#Create OpenACS User
 	set user_id [db_nextval acs_object_id_seq]
