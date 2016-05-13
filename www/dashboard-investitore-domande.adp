@@ -189,7 +189,7 @@
 			</div> 
 		</div>
     </section>
-	<section id="footer">
+			    <section id="footer">
         <div class="footer_b">
             <div class="container">
                 <div class="row">

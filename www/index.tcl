@@ -58,17 +58,6 @@ ad_form -name fast-question \
 	ad_script_abort
     }
 
-#NEWSFEED
-if {[db_0or1row query "select * from pe_newsfeed limit 1"]} {
-    db_foreach query "select '<div class=\"row search blue\"><div class=\"col-md-7\"><a target=\"_blank\" href=\"'||link||'\"><img class=\"img-responsive\" src=\"http://www.patrimoniaexpert.it/images/newsfeed_files/'||immagine||'\" alt=\"\"></a></div><div class=\"col-md-5\"><h3>'||titolo||'</h3><h4>'||sottotitolo||'</h4><p>'||testo||'</p><a class=\"btn btn-primary\" href=\"'||link||'\" target=\"_blank\">Leggi tutto <span class=\"glyphicon glyphicon-chevron-right\"></span></a></div></div>' as newsfeed from pe_newsfeed order by news_id desc limit 5" {
-	append newsfeed_html $newsfeed
-	append newsfeed_html "<hr class=\"light\">"
-    }
-    set newsfeed_html [string trimright $newsfeed_html "<hr class=\"light\">"]
-} else {
-    set newsfeed_html ""
-}
-
 #Estrazione vetrine dei professionisti
 set vetrine_html ""
 db_foreach query "select pe.professionista_id, p.first_names, p.last_name, pe.immagine, pe.permalink from pe_professionisti pe, persons p where pe.user_id = p.person_id and pe.pending_verification is true and pe.immagine is not null and char_length(pe.immagine) > 1 order by random() limit 12" {

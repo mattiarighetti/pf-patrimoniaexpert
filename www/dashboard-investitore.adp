@@ -198,6 +198,33 @@ Ti invitiamo a tornare spesso in questa tua area perché il portale <strong>Patr
             </div>
         </div>
     </section>
+    <section id="footer">
+        <div class="footer_b">
+            <div class="container">
+                <div class="row">
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="footer_bottom">
+                            <p class="text-block"> &copy; Copyright reserved to <span>PF Holding srl</span></p>
+                        </div>
+                    </div>
+                    <div class="col-md-6 col-sm-6 col-xs-12">
+                        <div class="footer_mid pull-right">
+                            <ul class="social-contact list-inline">
+                                <li> <a href="https://facebook.com/patrimoniaexpert"><i class="fa fa-facebook"></i></a></li>
+                                <!--<li><a href="#"> <i class="fa fa-linkedin"></i></a></li>-->
+                                <li> <a href="https://twitter.com/patrimoniaforum"><i class="fa fa-twitter"></i></a></li>
+                            </ul>
+                            <ul class="menu-footer list-inline">
+			      <li> <a href="news">News</a></li>
+			      <li> <a href="chi-siamo">Chi siamo</a></li>
+                              <li> <a href="contattaci.html">Contattaci</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
 </div>
     
     <!-- jQuery -->

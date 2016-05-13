@@ -240,18 +240,6 @@
             </div>-->
         </div>
     </section>
-    <!-- LUCA -->
-    <section id="blog" class="bg-primary">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <h2 class="section-heading">Dicono Di Noi</h2>
-                    <hr class="light">
-                </div>
-            </div>
-	    @newsfeed_html;noquote@
-        </div>
-    </section>
     <section id="footer">
         <div class="footer_b">
             <div class="container">
@@ -269,8 +257,9 @@
                                 <li> <a href="https://twitter.com/patrimoniaforum"><i class="fa fa-twitter"></i></a></li>
                             </ul>
                             <ul class="menu-footer list-inline">
-                                <li> <a href="chi-siamo">Chi siamo</a></li>
-                                <li> <a href="contattaci.html">Contattaci</a></li>
+			      <li> <a href="news">News</a></li>
+			      <li> <a href="chi-siamo">Chi siamo</a></li>
+                              <li> <a href="contattaci.html">Contattaci</a></li>
                             </ul>
                         </div>
                     </div>
