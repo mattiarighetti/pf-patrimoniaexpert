@@ -114,6 +114,10 @@ ad_form -name investitori_signup \
 	    {[string length $eta] < 10}
 	    "Il campo <strong>Età</strong> può contenere al massimo 10 caratteri."
 	}
+	{email
+	    {![db_0or1row query "select * from parties where email ilike :email limit 1"]}
+	    "L'email è già stata utilizzata in un'altra registrazione."
+	}
     } -on_submit {
 	#Create OpenACS User
 	set user_id [db_nextval acs_object_id_seq]
@@ -134,12 +138,9 @@ ad_form -name investitori_signup \
 				     -first_names ${nome} \
 				     -last_name ${cognome} \
 				     -password $password]
-	if {$creation_info(creation_status) ne "ok"} {
-	    ad_return_complaint 1 "Error: $creation_info(creation_status) <hr> $creation_info(creation_message)"
-	} else {
-	    ns_log notice ppp $creation_info(creation_status)
-	}
-
+	if {$creation_info(creation_status) ne "ok" || ![db_string query "select * from users where user_id = :user_id limit 1"]} {
+	    ad_return_complaint 1 "Si è verificato un errore nella creazione dell'account. Si prega di ritornare indietro e riprovare. In caso l'errore persista, si prega di aprire un ticket collegandosi a <a href=\"http://www.professionefinanza.com/supporto/\" target=\"_blank\">professionefinanza.com/supporto/</a> per ricevere ulteriore assistenza.<br><hr><i>Gli errori riportati dal sistema sono i seguenti:</i><br><code><b>Stato creazione:</b> $creation_info(creation_status)<br><b>Messaggio:</b> $creation_info(creation_message)</code><hr>"
+	} 
 	
 	# Genera nuovo ID Investitore
 	set investitore_id [db_string query "SELECT COALESCE(MAX(investitore_id)+ trunc(random()*99+1),1) FROM pe_investitori"]
@@ -535,7 +536,7 @@ ad_form -name investitori_signup \
 	    </html>
 	}
 	acs_mail_lite::send -to_addr ${email} -from_addr "no-reply@patrimoniaexpert.it" -mime_type "text/html" -subject $subject -body $body
-	ad_returnredirect [export_vars -base "login-pm" {return_url}]
+	ad_returnredirect -allow_complete_url [export_vars -base "http://www.patrimoniaexpert.it/login-pm" {return_url}]
 	ad_script_abort
     }
 ad_return_template

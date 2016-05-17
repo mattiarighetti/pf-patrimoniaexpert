@@ -13,16 +13,18 @@ set backgroundimage [lindex $bg_images [expr {int(rand()*[llength $bg_images])}]
 
 #Imposta url di ritorno
 if {![info exists return_url]} {
-    if {[db_0or1row query "select * from pe_professionisti where user_id = [ad_conn user_id] limit 1"]} {
-	set return_url "http://www.patrimoniaexpert.it/dashboard-professionista"
-    } else {
+#    if {[db_0or1row query "select * from pe_professionisti where user_id = [ad_conn user_id] limit 1"]} {
+#	set return_url "http://www.patrimoniaexpert.it/dashboard-professionista"
+#    } else {
 	set return_url "http://www.patrimoniaexpert.it/"
-    }
+ #   }
 }
 
 #Controllo su utenza
 if {[ad_conn user_id]} {
-    ad_returnredirect [export_vars -base "login-pm" {return_url}]
+    ns_log notice cald222 [ad_conn user_id]
+    set user_id [ad_conn user_id]
+    ad_returnredirect -allow_complete_url [export_vars -base "http://www.patrimoniameeting.it/login" {return_url user_id}]
     ad_script_abort
 }
 
