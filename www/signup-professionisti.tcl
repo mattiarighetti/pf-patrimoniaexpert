@@ -60,10 +60,10 @@ ad_form -name professionisti_signup \
 	    {options {[db_list_of_lists query "select denominazione, provincia_id from province order by denominazione"]}}
 	    {help_text "Per selezionarne più di una, tieni premuto il tasto ctrl o cmd"}
 	}
-	{privacy:text(checkbox)
+	{privacy:integer(checkbox)
 	    {label "Privacy"}
-	    {help_text "<a href=\"\">Informativa sulla privacy</a>"}
-	    {options {{"Accetto" y}}}
+	    {options {{"Accetto" 1}}}
+	    {help_text "Consulta <a href=\"http://professionefinanza.com/pagina.php?id=8\" target=\"_blank\"><b>termini e condizioni</b></a>."}
 	}
     } -validate {
 	{nome
@@ -77,6 +77,10 @@ ad_form -name professionisti_signup \
 	{email
 	    {![db_0or1row query "select * from parties where email ilike :email"]}
 	    "Email già registrata."
+	}
+	{privacy
+	    {$privacy == 1}
+	    "&Egrave; necessario accettare termini e condizioni per il trattamento della privacy."
 	}
     } -on_submit {
 	#Create OpenACS User

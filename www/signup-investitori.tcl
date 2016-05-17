@@ -89,6 +89,11 @@ ad_form -name investitori_signup \
 	    {label "Disponibilità finanziaria"}
 	    {html {"maxlength" "10"}}
 	}
+	{privacy:integer(checkbox)
+	    {label "Privacy"}
+	    {options {{"Accetto" 1}}}
+	    {help_text "Consulta <a href=\"http://professionefinanza.com/pagina.php?id=8\" target=\"_blank\"><b>termini e condizioni</b></a>."}
+	}
     } -validate {
 	{nome
 	    {[string length ${nome}] > 2}
@@ -117,6 +122,10 @@ ad_form -name investitori_signup \
 	{email
 	    {![db_0or1row query "select * from parties where email ilike :email limit 1"]}
 	    "L'email è già stata utilizzata in un'altra registrazione."
+	}
+	{privacy
+	    {$privacy == 1}
+	    "&Egrave; necessario accettare termini e condizioni per il trattamento della privacy."
 	}
     } -on_submit {
 	#Create OpenACS User
