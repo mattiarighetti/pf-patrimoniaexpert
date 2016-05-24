@@ -107,7 +107,7 @@
                 	<li class="dropdown">
                         <a href="#" class="login-img dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
                         	<img src="images/default/user.jpg" class="img-responsive" alt="">
-                            <span class="badge">4</span>
+				<!--<span class="badge">4</span>-->
                         </a>
                         <ul class="dropdown-menu">
                             <li><a href="#"><span class="glyphicon glyphicon-off"></span> Esci</a></li>

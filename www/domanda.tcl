@@ -33,12 +33,21 @@ if {[db_string query "select investitore_id from pe_domande where domanda_id = :
 ad_form -name "domanda-form" \
     -export {domanda_id} \
     -form {
-	{selCompetenza-professionisti:integer(select)
+	{selCompetenza-professionisti:integer(select),optional
 	    {html {class "form-control"}}
 	    {options {"" [db_list_of_lists query "select denominazione, categoria_id from pe_categorie order by categoria_id"]}}
 	}
 	{textarea-domanda:text(textarea)
 	    {html {name "textarea-domanda" rows "12" placeholder "Scrivi qui le tua domanda..." class "textarea-domanda form-control"}}
+	}
+    } -validate {
+	{selCompetenza-professionisti
+	    {{$selCompetenza-professionisti} ne ""}
+	    "Campo obbligatorio"
+	}
+	{textarea-domanda
+	    {{$textarea-domanda} ne ""}
+	    "La domanda è vuota"
 	}
     } -on_request {
 	db_1row query "select testo as \"textarea-domanda\" from pe_domande where domanda_id = :domanda_id"

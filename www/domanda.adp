@@ -104,6 +104,7 @@ In questo caso ti verrà proposto di modificare la domanda o di rivolgerti diret
   <div class="form-group">
     <label for="selCompetenza-professionisti">Area consulenziale</label>
     <formwidget id="selCompetenza-professionisti">
+      <formerror id="selCompetenza-professionisti"></formerror>
                             <!--<div class="form-group private-company">
                             <small>Inserisci la tua società</small>
                                 <input type="text" name="form-societa" placeholder="Società..." class="form-societa form-control" id="form-societa">
