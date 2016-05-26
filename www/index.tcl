@@ -71,7 +71,7 @@ db_foreach query "select pe.professionista_id, p.first_names, p.last_name, pe.im
     }
     append vetrine_html "<div class=\"col-md-3 col-sm-4\">\n<a href=\"professionisti/$permalink\" class=\"prof-box\">\n<img src=\"$immagine\" class=\"img-responsive\" alt=\"\">\n<div class=\"prof-box-caption\">\n<div class=\"prof-box-caption-content\">\n<div class=\"prof-name\">$first_names</div>\n<div class=\"prof-surname\">$last_name</div>\n<div class=\"prof-category text-faded\">Area di competenza<div class=\"row\">\n"
     #Estrazione aree di competenza professionista
-    db_foreach query "select c.denominazione, 'http://www.patrimoniaexpert.it/images/icons/'||c.round_icon as round_icon from pe_professionisti_categorie pc, pe_categorie c where pc.professionista_id = :professionista_id and c.categoria_id = pc.categoria_id order by c.categoria_id" {
+    db_foreach query "select c.denominazione, 'http://www.patrimoniaexpert.it/images/icons/'||c.round_icon as round_icon from pe_professionisti_categorie pc, pe_categorie c where pc.professionista_id = :professionista_id and c.categoria_id = pc.categoria_id order by random() limit 9" {
 	append vetrine_html "<div class=\"col-xs-4\">\n<img src=\"$round_icon\" class=\"img-responsive\" alt=\"$denominazione\" data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"$denominazione\"></div>\n"
     }
     append vetrine_html "</div>\n</div>\n</div>\n</div>\n</a></div>"
@@ -79,23 +79,23 @@ db_foreach query "select pe.professionista_id, p.first_names, p.last_name, pe.im
 
 #RICERCA
 ad_form -name ricerca \
-	-form {
-		{selCompetenza:integer(select)
-			{html {class "form-control"}}
-		    {options {"Seleziona..." [db_list_of_lists query "select denominazione, categoria_id from pe_categorie order by categoria_id"]}}
-		}
-		{selProvincia:integer(select)
-			{html {class "form-control"}}
-			{options {"Seleziona..." [db_list_of_lists query "select denominazione, provincia_id from province order by denominazione"]}}
-		}
-		{selSocieta:integer(select),optional
-			{html {class "form-control"}}
-			{options {"Seleziona..." [db_list_of_lists query "select denominazione, societa_id from pe_societa order by denominazione"]}}
-		}
-	} -after_submit {
-		ad_returnredirect [export_vars -base "ricerca" {selCompetenza selProvincia selSocieta}]
-		ad_script_abort
+    -form {
+	{selCompetenza:integer(select)
+	    {html {class "form-control"}}
+	    {options {"Seleziona..." [db_list_of_lists query "select denominazione, categoria_id from pe_categorie order by categoria_id"]}}
 	}
+	{selProvincia:integer(select)
+	    {html {class "form-control"}}
+	    {options {"Seleziona..." [db_list_of_lists query "select denominazione, provincia_id from province order by denominazione"]}}
+	}
+	{selSocieta:integer(select),optional
+	    {html {class "form-control"}}
+	    {options {"Seleziona..." [db_list_of_lists query "select denominazione, societa_id from pe_societa order by denominazione"]}}
+	}
+    } -after_submit {
+	ad_returnredirect [export_vars -base "ricerca" {selCompetenza selProvincia selSocieta}]
+	ad_script_abort
+    }
 
 # Estrazione eventi PatrimoniaMeeting per snippet
 set meeting_html "<div class=\"row container\">"

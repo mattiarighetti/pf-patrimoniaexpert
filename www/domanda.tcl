@@ -55,5 +55,5 @@ ad_form -name "domanda-form" \
 	db_dml query "update pe_domande set testo = '${textarea-domanda}', categoria_id = '${selCompetenza-professionisti}', timestamp = current_timestamp, stato_id = 2 where domanda_id = :domanda_id"
     } -after_submit {
 	ad_returnredirect "dashboard-investitore"
-	ad_script_aborto
+	ad_script_abort
     }
