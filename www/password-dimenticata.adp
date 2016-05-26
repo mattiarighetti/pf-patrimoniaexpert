@@ -65,7 +65,7 @@
                     </li>
                 	<li>
                     	<a href="#" class="launch-modal" data-modal-id="modal-pre-register">
-                        	<span class="glyphicon glyphicon-user"></span> Sign Up
+                          <span class="glyphicon glyphicon-user"></span> Sign Up
                         </a>
                     </li>
                 	<li>
@@ -83,7 +83,8 @@
 
     <section class="bg-primary" id="password-dimenticata">
         <div class="container">
-            <div class="row">
+          <div class="row">
+	    @msg_html;noquote@
                 <div class="col-lg-8 col-lg-offset-2 text-center">
                     <h2 class="section-heading">Recupero password</h2>
                     <hr class="light">
@@ -92,9 +93,13 @@
             <div class="row search blue">
                 <div class="col-sm-offset-3 col-sm-6">
                 	<h3><span class="glyphicon glyphicon-envelope"></span> Trova il tuo account</h3>
-                    <p>Inserisci il tuo indirizzo E-Mail, ti invieremo un messaggio con la password del tuo account:</p>
-                    <input type="e-mail" placeholder="Inserisci la tua e E-Mail..." class="form-control" id="e-mail">
-                    <button class="btn invia-mail-dimenticata" type="submit">Invia</button>
+			<p>Inserisci il tuo indirizzo E-Mail, ti invieremo un messaggio con la password del tuo account:</p>
+			<formtemplate id="recover_pwd">
+
+			 <input type="email" name="email" placeholder="Inserisci la tua e E-Mail..." class="form-control" id="email">
+			 <font color="red"><b><formerror id="email"></formerror><br></b></font>
+			 <button class="btn invia-mail-dimenticata" type="submit">Invia</button>
+		    </formtemplate
                 </div><!-- /.col-md-8 -->            
             </div><!-- /.row -->
             </div>
