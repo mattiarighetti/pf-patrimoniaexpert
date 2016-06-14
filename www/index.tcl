@@ -46,7 +46,7 @@ ad_form -name fast-question \
     } -validate {
 	{domanda
 	    {[pe_user_profoinv [ad_conn user_id]] eq "inv"}
-	    "Per poter sottoporre una domanda devi prima registrarti."
+	    "Per poter sottoporre una domanda <a href=\"/signup-investitori\">devi prima registrarti</a>."
 	}
     } -on_submit {
 	#Estrae next domanda_id
