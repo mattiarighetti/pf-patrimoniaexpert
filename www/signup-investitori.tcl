@@ -28,12 +28,25 @@ ad_form -name investitori_signup \
 	    {label "Cognome"}
 	}
 	{nickname:text
-		{label "Nickname"}
+	    {label "Nickname"}
+	    {help_text "Nel caso volessi fare una domanda ai professionisti, questo sarà l'unico dato reso visibile a loro."}
 	}
 	{email:text
 	    {label "Email"}
 	}
-	{telefono:text
+	{provincia_id:integer(select)
+	    {label "Provincia di residenza"}
+	    {options {[db_list_of_lists query "select denominazione, provincia_id from province order by denominazione"]}}
+	}
+	{competenze:integer(checkbox),multiple
+	    {label "Ritieni di aver bisogno"}
+	    {options {[db_list_of_lists query "select denominazione, categoria_id from pe_categorie"]}}
+	}
+	{consulenza:integer(multiselect),multiple
+	    {label "A chi ti rivolgi ad oggi per la tua consulenza patrimoniale?"}
+	    {options {[db_list_of_lists query "select descrizione, cons_id from pe_consattuale order by cons_id"]}}
+	}
+	{telefono:text,optional
 	    {label "Telefono"}
 	    {html {"maxlength" "20"}}
 	}
@@ -41,21 +54,9 @@ ad_form -name investitori_signup \
 	    {label "Indirizzo"}
 	    {html {"maxlength" "100"}}
 	}
-	{provincia_id:integer(select),optional
-	    {label "Provincia di residenza"}
-	    {options {[db_list_of_lists query "select denominazione, provincia_id from province order by denominazione"]}}
-	}
 	{professione:text,optional
 	    {label "Professione"}
 	    {html {"maxlength" "100"}}
-	}
-	{competenze:integer(checkbox),multiple
-	    {label "In quale area hai bisogno di consulenza qualificata?"}
-	    {options {[db_list_of_lists query "select denominazione, categoria_id from pe_categorie"]}}
-	}
-	{consulenza:integer(multiselect),multiple
-	    {label "A chi ti rivolgi ad oggi per la tua consulenza patrimoniale?"}
-	    {options {[db_list_of_lists query "select descrizione, cons_id from pe_consattuale order by cons_id"]}}
 	}
 	{eta:text,optional
 	    {label "Età"}
