@@ -98,10 +98,13 @@ ad_form -name ricerca \
     }
 
 # Estrazione eventi PatrimoniaMeeting per snippet
-set meeting_html "<div class=\"row container\">"
-db_foreach query "select e.evento_id, e.denominazione, e.descrizione, e.start_time, e.end_time, e.immagine, c.denominazione as luogo, l.denominazione from pm_eventi e, pm_luoghi l, comuni c where e.luogo_id = l.luogo_id and l.comune_id = c.comune_id and e.start_time > current_timestamp order by e.start_time asc limit 6" {
-    append meeting_html "<div class=\"col-sm-6 col-md-6 col-xs-12\" style=\"padding-bottom:20px;\"><a target=\"_blank\" href=\"http://www.patrimoniameeting.it/evento?evento_id=$evento_id\"><img src=\"http://www.patrimoniameeting.it/images/eventi_files/$immagine\" class=\"img-responsive\"></a><a href=\"http://www.patrimoniameeting.it/evento?evento_id=$evento_id\" class=\"btn\">Scheda evento</a></div>"
+if {[db_0or1row query "select * from pm_eventi where start_time > current_timestamp limit 1"]} {
+    set meeting_html "<div class=\"row container\">"
+    db_foreach query "select e.evento_id, e.denominazione, e.descrizione, e.start_time, e.end_time, e.immagine, c.denominazione as luogo, l.denominazione from pm_eventi e, pm_luoghi l, comuni c where e.luogo_id = l.luogo_id and l.comune_id = c.comune_id and e.start_time > current_timestamp order by e.start_time asc limit 6" {
+	append meeting_html "<div class=\"col-sm-6 col-md-6 col-xs-12\" style=\"padding-bottom:20px;\"><a target=\"_blank\" href=\"http://www.patrimoniameeting.it/evento?evento_id=$evento_id\"><img src=\"http://www.patrimoniameeting.it/images/eventi_files/$immagine\" class=\"img-responsive\"></a><a href=\"http://www.patrimoniameeting.it/evento?evento_id=$evento_id\" class=\"btn\">Scheda evento</a></div>"
+    }
+    append meeting_html "</div>"
+} else {
+    set meeting_html ""
 }
-append meeting_html "</div>"
-
 ad_return_template

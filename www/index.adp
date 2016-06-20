@@ -214,6 +214,7 @@
             </div>
        </div>
     </section>
+    <if @meeting_html@ ne "">
 <section id="cerca-eventi" class="bg-dark">
         <div class="container text-center">
             <div class="call-to-action">
@@ -239,7 +240,8 @@
 				
             </div>-->
         </div>
-    </section>
+</section>
+</if>
     <section id="footer">
         <div class="footer_b">
             <div class="container">
