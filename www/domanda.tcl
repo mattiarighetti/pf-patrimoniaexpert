@@ -52,6 +52,10 @@ ad_form -name "domanda-form" \
     } -on_request {
 	db_1row query "select testo as \"textarea-domanda\" from pe_domande where domanda_id = :domanda_id"
     } -on_submit {
+	set body "NOTIFICA AUTOMATICA DI INSERIMENTO NUOVA DOMANDA\n\n - ID: "
+	append body $domanda_id "\n - Categoria: " [db_string query "select denominazione from pe_categorie where categoria_id = ${selCompetenza-professionisti}"] "\n - Testo: " ${textarea-domanda} "\n\nAccedi all'area amministrazione per gestire."
+	acs_mail_lite::send -send_immediately -to_addr "info@professionefinanza.com" -from_addr "no-repy@patrimoniaexpert.it" -subject "Notifica amministrazione: nuova domanda" -body $body -mime_type "text/plain"
+	acs_mail_lite::send -send_immediately -to_addr "jonathan.figoli@professionefinanza.com" -from_addr "no-repy@patrimoniaexpert.it" -subject "Notifica amministrazione: nuova domanda" -body $body -mime_type "text/plain"
 	db_dml query "update pe_domande set testo = '${textarea-domanda}', categoria_id = '${selCompetenza-professionisti}', timestamp = current_timestamp, stato_id = 2 where domanda_id = :domanda_id"
     } -after_submit {
 	ad_returnredirect "dashboard-investitore"
