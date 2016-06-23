@@ -1,13 +1,16 @@
 <master>
-<property name="page_title">@page_title@</property>
-<property name="context">@context@</property>
+  <property name="page_title">@page_title@</property>
+  <property name="context">@context@</property>
 
-<table>
-<tr>
-<td>
-<a href="professionisti-list">Anagrafiche Professionisti</a>
-<a href="domande-list">Gestione domande</a>
-<a href="newsfeed-list">Gestione articoli</a>
-</td>
-</tr>
-</table>
+  <h2>Amministrazione</h2>
+  <table>
+    <tr>
+      <td>
+	<ul>
+	  <li><a href="professionisti-list">Anagrafiche Professionisti</a></li>
+	  <li><a href="domande-list">Gestione domande</a></li>
+	  <li><a href="newsfeed-list">Gestione articoli</a></li>
+	</ul>
+      </td>
+    </tr>
+  </table>

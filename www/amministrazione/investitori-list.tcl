@@ -1,23 +1,23 @@
 ad_page_contract {
     @author Mattia Righetti (mattia.righetti@professionefinanza.com)
-    @creation-date 3 March 2016
+    @creation-date 23 June 2016
 } {
     {rows_per_page 50}
     {offset 0}
     {q ""}
     orderby:optional
 }
-set page_title "Professionisti"
+set page_title "Investitori"
 set context [list [list index "Amministrazione"] $page_title]
-set actions [list "Aggiungi" professionisti-gest "Aggiungi un nuovo professionista"]
+set actions [list "Aggiungi" investitori-gest "Aggiungi un nuovo investitore"]
 source [ah::package_root -package_key ah-util]/paging-buttons.tcl
 template::list::create \
-    -name "professionisti" \
-    -multirow "professionisti" \
+    -name "investitori" \
+    -multirow "investitori" \
     -actions $actions \
-    -key professionista_id \
-    -row_pretty_plural "professionisti" \
-    -no_data "Nessun professionista trovato." \
+    -key investitore_id \
+    -row_pretty_plural "investitori" \
+    -no_data "Nessun investitore trovato." \
     -page_flush_p t \
     -elements {	
 	denominativo {

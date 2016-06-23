@@ -2,7 +2,7 @@
   <property name="page_title">@page_title;noquote@</property>
   <property name="context">@context;noquote@</property>
 
-  <h3>Anagrafiche professionisti</h3>
+  <h3>Anagrafiche investitori</h3>
   <table>
     <tr>
       <td class="list-filter-pane" width="200px" valign="top">
