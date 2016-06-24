@@ -1,27 +1,27 @@
 ad_page_contract {
     @author Mattia Righetti (mattia.righetti@professionefinanza.com)
-    @creation-date Thursday 19 February 2015
+    @creation-date Friday 24 June 2016
 } {
-    professionista_id:integer,optional
+    investitore_id:integer,optional
     upload_file:trim,optional
     upload_file.tmpfile:tmpfile,optional
 }
-if {[ad_form_new_p -key professionista_id]} {
-    set page_title "Nuovo professionista"
+if {[ad_form_new_p -key investitore_id]} {
+    set page_title "Nuovo investitore"
     set buttons [list [list "Aggiungi" new]]
     set portrait_html ""
 } else {
-    set page_title "Modifica professionista"
+    set page_title "Modifica investitore"
     set buttons [list [list "Modifica" edit]]
-    set portrait_html [db_string query "select immagine from pe_professionisti where professionista_id = :professionista_id"]
+    set portrait_html [db_string query "select immagine from pe_investitori where investitore_id = :investitore_id"]
 }
-set context [list [list index "Amministrazione"] [list professionisti-list "Professionisti"] $page_title]
-ad_form -name professionista \
+set context [list [list index "Amministrazione"] [list investitori-list "Investitori"] $page_title]
+ad_form -name investitore \
     -edit_buttons $buttons \
     -has_edit 1 \
     -html {enctype "multipart/form-data"} \
     -form {
-	professionista_id:key
+	investitore_id:key
 	{first_names:text
 	    {label "Nome"}
 	    {html {size 70 maxlength 100}}
@@ -36,38 +36,7 @@ ad_form -name professionista \
 	    
 	}
     }
-if {[ad_form_new_p -key professionista_id]} {
-    ad_form -extend -name professionista -form {
-	{provincia_id:integer(select)
-	    {label "Provincia"}
-	    {options {[db_list_of_lists query "select denominazione, provincia_id from province order by denominazione"]}}
-	    {help_text "Se sono più di una, potrai aggiungerle nel pannello Province nella vista elenco."}
-	}
-	{categoria_id:integer(select)
-	    {label "Competenza"}
-	    {options {[db_list_of_lists query "select denominazione, categoria_id from pe_categorie"]}}
-	    {help_text "Se sono più di una, potrai aggiungerle nel pannello Competenze nella vista elenco."}
-	    {after_html "<small><a href=\"competenze-list\" target=\"_blank\">Gestione competenze</a></small>"}
-	}
-	{certificazione_id:integer(select),optional
-	    {label "Certificazione"}
-	    {options {"" [db_list_of_lists query "select denominazione, certificazione_id from pe_certificazioni order by denominazione"]}}
-	    {help_text "Se sono più di una, potrai aggiungerle nel pannello Certificazioni nella vista elenco."}
-	    {after_html "<small><a href=\"certificazioni-list\" target=\"_blank\">Gestione certificazioni</a></small>"}
-	}
-	{award_id:integer(select),optional
-	    {label "PFAwards"}
-	    {options {"" [db_list_of_lists query "select anno, award_id from pe_pfawards order by anno desc"]}}
-	}
-	{aw_cat_id:integer(select),optional
-	    {label "Categoria PFAwards"}
-	    {options {"" [db_list_of_lists query "select denominazione, categoria_id from pe_categorie order by categoria_id"]}}
-	}
-	{medaglia_id:integer(select),optional
-	    {label "Medaglia PFAwards"}
-	    {options {"" [db_list_of_lists query "select descrizione, medaglia_id from pe_pfawards_medaglie order by medaglia_id"]}}
-	}
-    }
+if {[ad_form_new_p -key investitore_id]} {
 }
 ad_form -extend \
     -name professionista \

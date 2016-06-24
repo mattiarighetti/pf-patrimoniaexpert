@@ -50,16 +50,18 @@ ad_form -name login \
     } -on_submit {
 	#Take care of persistent login
 	if {![info exists $persistent]} {
-	    set persistent 0
+	    set persistent "f"
 	}
 	if {[db_0or1row query "select * from users where username ilike '${form-username}'"]} {
 	    array set auth_info [auth::authenticate \
 				     -username [string trim ${form-username}] \
-				     -password ${form-password}]
+				     -password ${form-password} \
+				     -persistent=[template::util::is_true $persistent]]
 	} elseif {[db_0or1row query "select * from parties where email ilike '${email}'"]} {
 	    array set auth_info [auth::authenticate \
 				     -email [string trim ${form-username}] \
-				     -password ${form-password}]
+				     -password ${form-password} \
+				     -persistent=[template::util::is_true $persistent]]
 	}
         # Handle authentication problems
 	switch $auth_info(auth_status) {
