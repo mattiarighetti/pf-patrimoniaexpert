@@ -7,7 +7,8 @@
     <tr>
       <td>
 	<ul>
-	  <li><a href="professionisti-list">Anagrafiche Professionisti</a></li>
+	  <li><a href="professionisti-list">Anagrafiche professionisti</a></li>
+	  <li><a href="investitori-list">Anagrafiche investitori</a></li>
 	  <li><a href="domande-list">Gestione domande</a></li>
 	  <li><a href="newsfeed-list">Gestione articoli</a></li>
 	</ul>

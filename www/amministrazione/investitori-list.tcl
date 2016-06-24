@@ -1,6 +1,6 @@
 ad_page_contract {
     @author Mattia Righetti (mattia.righetti@professionefinanza.com)
-    @creation-date 23 June 2016
+    @creation-date 24 June 2016
 } {
     {rows_per_page 50}
     {offset 0}
@@ -29,55 +29,25 @@ template::list::create \
 	username {
 	    label "Username"
 	}
-	last_modified {
-	    label "Ultima modifica"
+	investitore_id {
+	    label "ID investitore"
 	}
-	professionista_id {
-	    label "ID professionista"
-	}
-	pfspecialist {
-	    link_url_col pfawards_url
-	    display_template {PFSpecialist}
-	    link_html {title "Aggiungi medaglia PFSpecialist"}
+	profilo {
+	    link_url_col profilo_url
+	    display_template {Profilo}
+	    link_html {title "Gestisci profilo dell'investitore."}
 	    sub_class narrow
 	}
-	pending_verification {
-	    label "Approvazione"
-	}
-	competences {
-	    link_url_col competences_url
-	    display_template {Competenze}
-	    link_html {title "Gestisci competenze del professionista"}
-	    sub_class narrow
-	}
-	certificazioni {
-	    link_url_col certificazioni_url
-	    display_template {Certificazioni}
-	    link_html {title "Gestisci certificazioni del professionista"}
-	    sub_class narrow
-	}
-	province {
-	    link_url_col province_url
-	    display_template {Province}
-	    link_html {title "Gestisci l'area di attività geografica del professionista"}
-	    sub_class narrow
-	}
-	view {
-	    link_url_col view_url
-	    display_template {Vedi scheda}
-	    link_html {title "Vedi vetrina professionista"}
-	    sub_class narrow
-	}
-	edit {
-	    link_url_col edit_url
-	    display_template {<img src="http://patrimoniaexpert.cloudapp.net/shared/images/Edit16.gif" height="16" width="16" border="0">}
-	    link_html {title "Modifica professionista."}
+	domande {
+	    link_url_col domande_url
+	    display_template {Domande}
+	    link_html {title "Gestisci domande di questo investitore."}
 	    sub_class narrow
 	}
    	delete {
 	    link_url_col delete_url 
 	    display_template {<img src="http://patrimoniaexpert.cloudapp.net/shared/images/Delete16.gif" height="16" width="16"border="0">}
-	    link_html {title "Cancella professionista." onClick "return(confirm('Confermi di voler cancellare il professionista?'));"}
+	    link_html {title "Cancella profilo investitore." onClick "return(confirm('Confermi di voler eliminare questa utenza?'));"}
 	    sub_class narrow
 	}
     } -filters {
@@ -96,26 +66,14 @@ template::list::create \
 	    label "Cognome"
 	    orderby "p.last_name"
 	}
-	last_modified {
-	    label "Ultima modifica"
-	    orderby "pe.last_modified"
-	}
     }
 db_multirow \
     -extend {
-	pfawards_url
-	competences_url
-	certificazioni_url
-	province_url
-	view_url
-	edit_url
+	profilo_url
+	domande_url
 	delete_url
-    } professionisti query "SELECT pa.email, pe.last_modified, u.username, p.last_name||' '||p.first_names||' (ID utente:'||p.person_id||')' as denominativo, pe.professionista_id, case when pending_verification is true then 'Approvato' else 'Non approvato' end as pending_verification, '/professionisti/'||pe.permalink as permalink FROM persons p, parties pa, users u, pe_professionisti pe WHERE pa.party_id = p.person_id AND pe.user_id = p.person_id AND u.user_id = p.person_id [template::list::filter_where_clauses -name professionisti -and] [template::list::orderby_clause -name professionisti -orderby]" {
-	set pfawards_url [export_vars -base "professionisti-pfawards-list" {professionista_id}]
-	set competences_url [export_vars -base "professionisti-competenze-list" {professionista_id}]
-	set certificazioni_url [export_vars -base "professionisti-certificazioni-list" {professionista_id}]
-	set province_url [export_vars -base "professionisti-province-list" {professionista_id}]
-	set view_url $permalink
+    } investitori query "SELECT pa.email, u.username, INITCAP(LOWER(p.last_name))||' '||INITCAP(LOWER(p.first_names))||' (ID utente:'||p.person_id||')' as denominativo, i.investitore_id FROM persons p, parties pa, users u, pe_investitori i WHERE pa.party_id = p.person_id AND i.user_id = p.person_id AND u.user_id = p.person_id [template::list::filter_where_clauses -name investitori -and] [template::list::orderby_clause -name investitori -orderby]" {
 	set edit_url [export_vars -base "professionisti-gest" {professionista_id}]
-	set delete_url [export_vars -base "professionisti-canc" {professionista_id}]
+	set return_url [ad_return_url -urlencode]
+	set delete_url [export_vars -base "investitori-canc" {investitore_id}]
     }

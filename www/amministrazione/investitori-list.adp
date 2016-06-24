@@ -21,14 +21,14 @@
 	      <td>
 		<center>
 		  <input class="bot" type="submit" value="Cerca" />
-		  <input class="bot" type="button" value="Reset" onClick="location.href='professionisti-list';" />
+		  <input class="bot" type="button" value="Reset" onClick="location.href='investitori-list';" />
 		</center>
 	      </td>
 	    </tr>
 	    <tr>
-	      <listfilters name="professionisti"></listfilters>
+	      <listfilters name="investitori"></listfilters>
 	      <td class="list-list-pane" valign="top">
-    		<listtemplate name="professionisti"></listtemplate>
+    		<listtemplate name="investitori"></listtemplate>
 	      </td>
 	    </tr>
 	  </table>
