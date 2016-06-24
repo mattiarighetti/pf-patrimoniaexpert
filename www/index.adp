@@ -153,7 +153,7 @@
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 text-center">
                     <h2 class="section-heading">Trova il miglior consulente in Italia nella gestione del tuo patrimonio</h2>
-                    <h4>Selezionale per area consulenziale di tuo interesse e provincia di attività</h4>
+                    <h4>Selezionalo per area consulenziale di tuo interesse e provincia di attività</h4>
                     <hr class="light">
                 </div>
             </div>
@@ -205,7 +205,7 @@
         </formtemplate>
             <div class="row">
                 <div class="col-lg-8 col-lg-offset-2 text-center">
-                    <h2 class="section-heading">Ecco le vetrine dei professionisti selezionate per te</h2>
+                    <h2 class="section-heading">Le vetrine dei professionisti selezionate per te</h2>
                     <hr class="light">
                 </div>
             </div>
@@ -259,7 +259,7 @@
                                 <li> <a href="https://twitter.com/patrimoniaforum"><i class="fa fa-twitter"></i></a></li>
                             </ul>
                             <ul class="menu-footer list-inline">
-			      <li> <a href="news">News</a></li>
+			      <li> <a href="news">Dicono di noi</a></li>
 			      <li> <a href="chi-siamo">Chi siamo</a></li>
                               <li> <a href="contattaci.html">Contattaci</a></li>
                             </ul>

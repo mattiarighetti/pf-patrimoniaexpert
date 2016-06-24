@@ -78,6 +78,6 @@ ad_form -name login \
 	    }
 	}
     } -after_submit {
-	ad_returnredirect [export_vars -base "login-pm" {return_url}]
+	ad_returnredirect [export_vars -base "login-pm" {return_url persistent}]
 	ad_script_abort
     }
