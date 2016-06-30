@@ -1,0 +1,9 @@
+ad_page_contract {
+    Pagine con form per contatti.
+
+    @author Mattia Righetti (mattia.righetti@professionefinanza.com)
+    @creation-date Friday 24 June 2016
+} {
+    {msg ""}
+}
+ad_return_template
