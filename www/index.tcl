@@ -69,7 +69,7 @@ db_foreach query "select pe.professionista_id, p.first_names, p.last_name, pe.im
 	append i $immagine
 	set immagine $i
     }
-    append vetrine_html "<div class=\"col-md-3 col-sm-4\">\n<a href=\"professionisti/$permalink\" class=\"prof-box\">\n<img src=\"$immagine\" class=\"img-responsive\" alt=\"\">\n<div class=\"prof-box-caption\">\n<div class=\"prof-box-caption-content\">\n<div class=\"prof-name\">$first_names</div>\n<div class=\"prof-surname\">$last_name</div>\n<div class=\"prof-category text-faded\">Area di competenza<div class=\"row\">\n"
+    append vetrine_html "<div class=\"col-md-3 col-sm-4\">\n<a href=\"professionisti/$permalink\" class=\"prof-box\">\n<img src=\"$immagine\" style=\"object-fit:fill;\" class=\"img-responsive\" alt=\"\">\n<div class=\"prof-box-caption\">\n<div class=\"prof-box-caption-content\">\n<div class=\"prof-name\">$first_names</div>\n<div class=\"prof-surname\">$last_name</div>\n<div class=\"prof-category text-faded\">Area di competenza<div class=\"row\">\n"
     #Estrazione aree di competenza professionista
     db_foreach query "select c.denominazione, 'http://www.patrimoniaexpert.it/images/icons/'||c.round_icon as round_icon from pe_professionisti_categorie pc, pe_categorie c where pc.professionista_id = :professionista_id and c.categoria_id = pc.categoria_id order by random() limit 9" {
 	append vetrine_html "<div class=\"col-xs-4\">\n<img src=\"$round_icon\" class=\"img-responsive\" alt=\"$denominazione\" data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"$denominazione\"></div>\n"

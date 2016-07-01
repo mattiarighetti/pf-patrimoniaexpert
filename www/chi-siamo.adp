@@ -98,25 +98,13 @@
             </div>
             <div class="row-search blue">
               <div class="col-sm-offset-2 col-sm-8">
-		<p><strong>PatrimoniaExpert</strong> è la start-up nata dal team di <strong>ProfessioneFinanza</strong> dedicata interamente all’incontro fra offerta e domanda di consulenza qualificata.</p>
-		<p>Un portale web in cui l’investitore potrà trovare i migliori Professionisti d’Italia suddivisi per aree di competenza specialistica, decidere di creare un contatto diretto con loro piuttosto che porre una domanda di consulenza generica con la garanzia di ricevere risposte qualificate in breve tempo e la possibilità di dare un rating alla qualità delle risposte ottenute.</p>
-		<p>Una vera e propria <strong>Vetrina del Professionista</strong> consente di individuare il consulente con le specifiche  competenze nelle seguenti aree consulenziali:</p>
-		<ul>
-		  <li>Costruzione del Portafoglio</li>
-		  <li>Analisi di Mercato</li>
-		  <li>Consulenza Previdenziale</li>
-		  <li>Consulenza Fiscale alla Famiglia</li>
-		  <li>Relazione con il Cliente</li>
-		  <li>Tutela Patrimoniale</li>
-		  <li>Consulenza all’Impresa</li>
-		  <li>Pianificazione Successoria</li>
-		  <li>Investimenti immobiliari</li>
-		</ul>
-		<p>Piuttosto che individuare le qualifiche professionali  come certificazioni o la prestigiosa vittoria dei <strong>PFAwards</strong>.</p>
-		<p>I prossimi passi di <strong>PatrimoniaExpert</strong> saranno quelli di mettere a disposizione dell’investitore, tramite un sofisticato algoritmo, la possibilità di effettuare autonomamente una prima analisi sul proprio patrimonio.</p>
-		<p>Il mondo <strong>PatrimoniaExpert</strong> si completerà presto con <strong>PatrimoniaMeeting</strong>, il portale dedicato agli incontri educational proposti al risparmiatore/investitore sull’intero territorio nazionale con docenti universitari ed esperti del settore, il <strong>PatrimoniaForum</strong> il più importante evento dedicato alla gestione del proprio patrimonio e con i portali Bailin.it e Conoscilatuabanca.it dove si forniranno utili approfondimenti per valutare la solidità e le offerte di investimento del proprio intermediario.</p>
-		 
-                </div><!-- /.col-md-8 -->            
+		<p><b>PatrimoniaExpert</b> è una società che nasce nel 2016 all’interno di Professione Finanza, realtà affermata che offre formazione qualificata sui temi economico-finanziari alla vasta platea dei Consulenti Finanziari di tutta Italia.<br>
+		    <b>PatrimoniaExpert</b> nasce dall’intuizione di un gruppo di professionisti con significativa esperienza nel settore: creare il primo ed unico portale dedicato all’inconro tra offerta e domanda di consulenza qualificata.<br><br>
+
+		    <b>PatrimoniaExpert</b> vuole declinare la consolidata esperienza nella formazione dei professionisti al cliente finale, per renderlo partecipe di ciò che accade nel mondo complesso e variegato dei mercati e per offrirgli i migliori strumenti per la gestione del proprio patrimonio.</p>		 
+<br>
+<img src="/images/slide-presentazione.jpg" class="img-responsive">
+              </div><!-- /.col-md-8 -->            
             </div><!-- /.row -->
             </div>
     	</div>              

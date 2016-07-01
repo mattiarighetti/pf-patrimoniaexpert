@@ -60,28 +60,48 @@
                 </a>
             </div>
 
-            <!-- Collect the nav links, forms, and other content for toggling -->
-            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-                <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a class="page-scroll" href="index">Trova professionista</a>
-                    </li>
-                    <li>
-                        <a class="page-scroll" href="index">Cerca eventi</a>
-                    </li>
-                	<li>
-                    	<a href="#" class="launch-modal" data-modal-id="modal-pre-register">
-                        	<span class="glyphicon glyphicon-user"></span> Registrati
-                        </a>
-                    </li>
-                	<li>
-                    	  <a href="#" class="launch-modal" data-modal-id="modal-login">
-                        	<span class="glyphicon glyphicon-log-in"></span> Login
-                        </a>
-                    </li>
-                </ul>
-            </div>
-            <!-- /.navbar-collapse -->
+	    <!-- Collect the nav links, forms, and other content for toggling -->
+	    <if @user_loggedin@ eq 1>
+	      <div class="user">
+		<ul class="nav navbar-nav navbar-right">
+		  <li class="dropdown">
+		    <a href="#" class="login-img dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">
+		      <img src="@user_portrait@" class="img-responsive" alt="">
+		    </a>
+		    <ul class="dropdown-menu">
+		      <li><a href="@user_dashlink@"><span class="glyphicon glyphicon-pencil"></span> Modifica</a></li>
+		      <li><a href="/logout"><span class="glyphicon glyphicon-off"></span> Esci</a></li>
+		    </ul>
+		  </li>
+		</ul>
+	      </div>
+	    </if>
+	    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+	      <ul class="nav navbar-nav navbar-right">
+		<li>
+		  <a class="page-scroll" href="#trova-professionista">Trova professionista</a>
+		</li>
+		<li>
+		  <a class="page-scroll" href="#cerca-eventi">Cerca eventi</a>
+		</li>
+		<if @user_loggedin@ ne 1>
+		  <li>
+		    <a href="#" class="launch-modal" data-modal-id="modal-pre-register">
+		      <span class="glyphicon glyphicon-user"></span> Registrati
+		    </a>
+		  </li>
+		  <li>
+		                            <!--ORIGINAL--<a href="#" class="launch-modal" data-modal-id="modal-login">                                                                                                             
+                            <span class="glyphicon glyphicon-log-in"></span> Login                                                                                                                              
+					    </a>-->
+					    <a href="login">
+					      <span class="glyphicon glyphicon-log-in"></span> Login
+					    </a>
+		  </li>
+		</if>
+	      </ul>
+	    </div>
+	                <!-- /.navbar-collapse -->
 		</div>
         </div>
         <!-- /.container-fluid -->

@@ -261,7 +261,7 @@
                             <ul class="menu-footer list-inline">
 			      <li> <a href="news">Dicono di noi</a></li>
 			      <li> <a href="chi-siamo">Chi siamo</a></li>
-                              <li> <a href="contattaci.html">Contattaci</a></li>
+                              <li> <a href="contattaci">Contattaci</a></li>
                             </ul>
                         </div>
                     </div>

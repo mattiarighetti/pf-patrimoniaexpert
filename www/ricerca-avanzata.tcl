@@ -36,31 +36,21 @@ if {[ad_conn user_id]} {
 }
 
 #
+ad_form -name ricerca \
+    -form {
+	{categoria:integer(select)
+	    {options {[db_list_of_lists query "select denominazione, categoria_id from pe_categorie"]}}
+	    {html {class "form-control"}}
+	}
+	{provincia:integer(select)
+	    {options {[db_list_of_lists query "select denominazione, provincia_id from province order by denominazione"]}}
+	    {html {class "form-control"}}
+	}
+	{societa:integer(select)
+	    {options {[db_list_of_lists query "select denominazione, societa_id from pe_societa order by denominazione"]}}
+	    {html {class "form-control"}}
+	}
+	
+    }
 
-set vetrine_html ""
-set query_part ""
-if {[info exists competenza] && $competenza ne ""} {
-    append query_part "and exists(select * from pe_professionisti_categorie cc where cc.categoria_id = :competenza and cc.professionista_id = pe.professionista_id) "
-}
-if {[info exists provincia] && $provincia ne ""} {
-    append query_part "and exists(select * from pe_professionisti_province pp where pp.provincia_id = :provincia and pp.professionista_id = pe.professionista_id) "
-}
-if {[info exists societa] && $societa ne ""} {
-    append query_part "and pe.societa_id = :societa"
-}
-db_foreach query "select pe.professionista_id, p.first_names, p.last_name, pe.immagine, pe.permalink from pe_professionisti pe, persons p where pe.pending_verification is true and pe.user_id = p.person_id $query_part order by random()" {
-    #Controllo sull'immagine
-    if {$immagine eq ""} {
-	set immagine "images/default/user.jpg"
-    } else {
-	set i "http://www.patrimoniaexpert.it/images/professionisti_portraits/"
-	append i $immagine
-	set immagine $i
-    }
-    append vetrine_html "<div class=\"col-md-3 col-sm-4\">\n<a href=\"professionisti/$permalink\" class=\"prof-box\">\n<img src=\"$immagine\" class=\"img-responsive\" alt=\"\">\n<div class=\"prof-box-caption\">\n<div class=\"prof-box-caption-content\">\n<div class=\"prof-name\">$first_names</div>\n<div class=\"prof-surname\">$last_name</div>\n<div class=\"prof-category text-faded\">Area di competenza<div class=\"row\">\n"
-    #Estrazione aree di competenza professionista
-    db_foreach query "select c.denominazione, 'http://www.patrimoniaexpert.it/images/icons/'||c.round_icon as round_icon from pe_professionisti_categorie pc, pe_categorie c where pc.professionista_id = :professionista_id and c.categoria_id = pc.categoria_id order by c.categoria_id" {
-	append vetrine_html "<div class=\"col-xs-4\">\n<img src=\"$round_icon\" class=\"img-responsive\" alt=\"$denominazione\" data-toggle=\"tooltip\" data-placement=\"bottom\" title=\"$denominazione\"></div>\n"
-    }
-    append vetrine_html "</div>\n</div>\n</div>\n</div>\n</a></div>"
-}
+

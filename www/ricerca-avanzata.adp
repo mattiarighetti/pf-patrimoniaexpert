@@ -49,7 +49,7 @@
                     <span class="icon-bar"></span>
                     <span class="icon-bar"></span>
                 </button>
-                <a class="navbar-brand page-scroll" href="index.html">
+                <a class="navbar-brand page-scroll" href="index">
                 	<img src="images/logo-beta.png" class="img-responsive" alt="">
                 </a>
             </div>
@@ -57,11 +57,11 @@
             <!-- Collect the nav links, forms, and other content for toggling -->
             <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                 <ul class="nav navbar-nav navbar-right">
-                    <li>
-                        <a class="page-scroll" href="index.html">Trova professionista</a>
+                  <li>
+                        <a class="page-scroll" href="index">Trova professionista</a>
                     </li>
                     <li>
-                        <a class="page-scroll" href="index.html">Cerca eventi</a>
+                        <a class="page-scroll" href="index">Cerca eventi</a>
                     </li>
                 	<li>
                     	<a href="#" class="launch-modal" data-modal-id="modal-pre-register">
@@ -69,7 +69,7 @@
                         </a>
                     </li>
                 	<li>
-                    	<a href="#" class="launch-modal" data-modal-id="modal-login">
+                    	<a href="login">
                         	<span class="glyphicon glyphicon-log-in"></span> Login
                         </a>
                     </li>
@@ -106,12 +106,7 @@
                 <div class="col-md-4">
                     <div class="form-group">
 						<label for="form-societa">Società</label>
-						<select class="form-control" id="selSocieta">
-							<option>Società 1</option>
-							<option>Società 2</option>
-							<option>Società 3</option>
-							<option value="altro">Altro</option>
-						</select>
+						<formwidget id="societa"></formwidget>
                     </div>
                 </div><!-- /.col-md-4 -->
                 <div class="col-md-4">
@@ -183,13 +178,13 @@
                     </div>
                 </div><!-- /.col-md-4 -->
                 <div class="col-md-4">
-                    <a class="btn btn-default link-prof-search" href="professionisti.html">
-                    	<span class="glyphicon glyphicon-search"></span> CERCA PROFESSIONISTA
-                    </a>
+                    <button class="btn btn-default link-prof-search" type="submit"><span class="glyphicon glyphicon-search"></span> CERCA PROFESSIONISTA</button>
                 </div><!-- /.col-md-4 -->              
             </div><!-- /.row -->
-            </div>
-    	</div>              
+
+        </div>
+</formtemplate>
+</div>              
     </section>
 	<section id="footer">
         <div class="footer_b">
@@ -270,7 +265,7 @@
         </div>
     </div>
 </div>
-	
+>	
 <!-- MODAL AIPB -->
 <div class="modal fade" id="modal-aipb" tabindex="-1" role="dialog" aria-labelledby="modal-register-label" aria-hidden="true">
     <div class="modal-dialog">
