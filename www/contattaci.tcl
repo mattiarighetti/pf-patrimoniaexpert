@@ -6,7 +6,7 @@ ad_page_contract {
 } {
     {msg ""}
 }
-if {msg ne ""} {
+if {$msg ne ""} {
     set msg_html "<div class=\"alert alert-success\" role=\"alert\">La tua richiesta di contatto è stata correttamente inviata e verrà elaborata al più presto.</div>"
 }
 ad_form -name "contattaci" \

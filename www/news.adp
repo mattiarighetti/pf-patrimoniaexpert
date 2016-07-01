@@ -81,7 +81,7 @@
                     <if @user_loggedin@ ne 1>
                     <li>
                         <a href="#" class="launch-modal" data-modal-id="modal-pre-register">
-                            <span class="glyphicon glyphicon-user"></span> Sign Up
+                            <span class="glyphicon glyphicon-user"></span> Registrati
                         </a>
                     </li>
                     <li>
@@ -113,7 +113,7 @@
         </div>
     </section>
 
-	<section id="footer">
+       <section id="footer">
         <div class="footer_b">
             <div class="container">
                 <div class="row">
@@ -129,12 +129,17 @@
                                 <!--<li><a href="#"> <i class="fa fa-linkedin"></i></a></li>-->
                                 <li> <a href="https://twitter.com/patrimoniaforum"><i class="fa fa-twitter"></i></a></li>
                             </ul>
+                            <ul class="menu-footer list-inline">
+			      <li> <a href="news">Dicono di noi</a></li>
+			      <li> <a href="chi-siamo">Chi siamo</a></li>
+                              <li> <a href="contattaci">Contattaci</a></li>
+                            </ul>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+       </section>
 </div>
 
 

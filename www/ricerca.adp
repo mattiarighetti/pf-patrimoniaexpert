@@ -81,7 +81,7 @@
                     <if @user_loggedin@ ne 1>
                     <li>
                         <a href="#" class="launch-modal" data-modal-id="modal-pre-register">
-                            <span class="glyphicon glyphicon-user"></span> Sign Up
+                            <span class="glyphicon glyphicon-user"></span> Registrati
                         </a>
                     </li>
                     <li>

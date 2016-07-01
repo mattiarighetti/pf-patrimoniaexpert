@@ -65,7 +65,7 @@
                     </li>
                 	<li>
                     	<a href="#" class="launch-modal" data-modal-id="modal-pre-register">
-                          <span class="glyphicon glyphicon-user"></span> Sign Up
+                          <span class="glyphicon glyphicon-user"></span> Registrati
                         </a>
                     </li>
                 	<li>
@@ -104,28 +104,6 @@
             </div><!-- /.row -->
             </div>
     	</div>              
-    </section>
-	<section id="footer">
-        <div class="footer_b">
-            <div class="container">
-                <div class="row">
-                    <div class="col-md-6 col-sm-6 col-xs-12">
-                        <div class="footer_bottom">
-                            <p class="text-block"> &copy; Copyright reserved to <span>PF Holding srl</span></p>
-                        </div>
-                    </div>
-                    <div class="col-md-6 col-sm-6 col-xs-12">
-                        <div class="footer_mid pull-right">
-                            <ul class="social-contact list-inline">
-                                <li> <a href="https://facebook.com/patrimoniaexpert"><i class="fa fa-facebook"></i></a></li>
-                                <!--<li><a href="#"> <i class="fa fa-linkedin"></i></a></li>-->
-                                <li> <a href="https://twitter.com/patrimoniaforum"><i class="fa fa-twitter"></i></a></li>
-                            </ul>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
     </section>
 </div>
  
